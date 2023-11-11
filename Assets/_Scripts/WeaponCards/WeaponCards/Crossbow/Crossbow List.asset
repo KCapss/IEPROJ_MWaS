@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c192b14119681be47ac6e9a5c7e7bf96, type: 3}
+  m_Name: Crossbow List
+  m_EditorClassIdentifier: 
+  list:
+  - {fileID: 11400000, guid: 52b341d021a32944b86485f6acf7dee2, type: 2}
+  - {fileID: 11400000, guid: 53bd845ea3ed2b54c9f5384edfb4f2ad, type: 2}
+  - {fileID: 11400000, guid: 4b648216e8e646f42aedd1fe5c696d02, type: 2}
+  - {fileID: 11400000, guid: 8523754c7b8617f478681b1663be27d0, type: 2}
+  - {fileID: 11400000, guid: 659e9c89ca5d3cc489adb45b24fbf9dc, type: 2}
+  - {fileID: 11400000, guid: f234eac4fc1c2f947bd00a0fafcfe6c2, type: 2}
+  - {fileID: 11400000, guid: b742e2695c1e9fc4ebd9929ba03a74ab, type: 2}
+  - {fileID: 11400000, guid: 5765f8b716436634e896c9d3f053590c, type: 2}

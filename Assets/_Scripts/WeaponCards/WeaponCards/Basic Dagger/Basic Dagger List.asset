@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c192b14119681be47ac6e9a5c7e7bf96, type: 3}
+  m_Name: Basic Dagger List
+  m_EditorClassIdentifier: 
+  list:
+  - {fileID: 11400000, guid: 3c488a15ebf1eec43872a770edc99f9d, type: 2}
+  - {fileID: 11400000, guid: 9526ca5bc9bd6ef43b1ae234eb1ac688, type: 2}
+  - {fileID: 11400000, guid: 7c63370ddc800e048b155b66b3e50052, type: 2}
+  - {fileID: 11400000, guid: ed07363b7f6b2c442a0fc492efafca18, type: 2}
+  - {fileID: 11400000, guid: 8731a93dc4933e24b8c8f765ab34a567, type: 2}
+  - {fileID: 11400000, guid: 9c3bf2bbf711b8245ad4fb1a5a708e0d, type: 2}
+  - {fileID: 11400000, guid: 98a0e33f876561347b51a7cf1e2726eb, type: 2}
+  - {fileID: 11400000, guid: cca7d737b2dff9e48a8de452fda73aaa, type: 2}

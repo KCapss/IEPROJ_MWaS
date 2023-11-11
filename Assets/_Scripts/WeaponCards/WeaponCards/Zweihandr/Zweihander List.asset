@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c192b14119681be47ac6e9a5c7e7bf96, type: 3}
+  m_Name: Zweihander List
+  m_EditorClassIdentifier: 
+  list:
+  - {fileID: 11400000, guid: 767b911401ee60a429b59e049616fd8d, type: 2}
+  - {fileID: 11400000, guid: 705224d179d0ee745be2d1a8dee36930, type: 2}
+  - {fileID: 11400000, guid: ab87eb9f03c80bb459458e2220fee0ce, type: 2}
+  - {fileID: 11400000, guid: b363675ea6630a6448e24cd7262c797f, type: 2}
+  - {fileID: 11400000, guid: bb60bb6eb31bee04bb3f06dba8a3c73d, type: 2}
+  - {fileID: 11400000, guid: a13fb1bf7b419ea40b97558c1f64d9cd, type: 2}
+  - {fileID: 11400000, guid: ca11be1172a812e4dab68b69fdc41cdd, type: 2}
+  - {fileID: 11400000, guid: c84ce98789ded564ca5b1a8793228c49, type: 2}

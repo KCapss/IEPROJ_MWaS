@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce1d8a4137fac445918ff03f8dacaa2, type: 3}
+  m_Name: Hobgoblin
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 7636217614159085044, guid: 72ddd5e8bee0904489eeacd79c5e5d97, type: 3}
+  Name: Hobgoblin
+  movementPoints: 50
+  HP:
+    current: 0
+    max: 5
+    canGoNegative: 0
+  damage: 3
+  attackRange: 1
+  faction: 1
+  DEX: 1
+  DEF: 6
+  DropType: 0
+  Money: 1000

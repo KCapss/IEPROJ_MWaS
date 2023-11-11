@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c192b14119681be47ac6e9a5c7e7bf96, type: 3}
+  m_Name: Poisoned Dagger List
+  m_EditorClassIdentifier: 
+  list:
+  - {fileID: 11400000, guid: b04789e002e4ffd438d07d8c36140851, type: 2}
+  - {fileID: 11400000, guid: bbf409c66c9dd24449ffcdca84af1c4d, type: 2}
+  - {fileID: 11400000, guid: bbf5231ce9e2ae4489ddddf40c6977f8, type: 2}
+  - {fileID: 11400000, guid: 11ee9cc99594faf4f980232e8afe7ad0, type: 2}
+  - {fileID: 11400000, guid: 6249ec180e59a824fb339c14651f4a1b, type: 2}
+  - {fileID: 11400000, guid: 764c6e7b7684f694b9c431b413ea5d18, type: 2}
+  - {fileID: 11400000, guid: a553db24503d62e44a4836473f148439, type: 2}
+  - {fileID: 11400000, guid: afa5e35056ab44a468aef042d44c630c, type: 2}

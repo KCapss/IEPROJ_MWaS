@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c192b14119681be47ac6e9a5c7e7bf96, type: 3}
+  m_Name: Basic Sword List
+  m_EditorClassIdentifier: 
+  list:
+  - {fileID: 11400000, guid: 99510f94b7c18cb47a8c0a5112d47314, type: 2}
+  - {fileID: 11400000, guid: 4ec0965c0c351da4ab3535ec1928ab46, type: 2}
+  - {fileID: 11400000, guid: 1605868af4c072b4582b10a6681586e2, type: 2}
+  - {fileID: 11400000, guid: c3afa2f3a42f4514386337ffd3f9ca40, type: 2}
+  - {fileID: 11400000, guid: eceae5c5a9119bb4b9ae7a64f72d3f01, type: 2}
+  - {fileID: 11400000, guid: 6a9d80685fd39fd4ebdf632843872db4, type: 2}
+  - {fileID: 11400000, guid: a6fc9cbdde7f6d542869b6d6d3a624a7, type: 2}
+  - {fileID: 11400000, guid: fea9c717cb0256043a6a4fcc945ab427, type: 2}
