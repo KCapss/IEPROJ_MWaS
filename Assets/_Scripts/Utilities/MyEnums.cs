@@ -53,7 +53,15 @@ public enum AudioType
 
 public enum VFXTag
 {
-    Sword_Slash = 0
+    Sword_Slash = 0,
+    Short_Slash,
+    Zwei_Slash,
+    Dagger_Slash,
+    PoisonD_Slash,
+    Dual_Slash,
+    Basic_Bow,
+    Short_Bow,
+    CrossBow,
 }
 
 public enum PoolTag 

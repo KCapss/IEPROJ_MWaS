@@ -19,6 +19,7 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
     [SerializeField] private TextMeshProUGUI restrictionType;
     [SerializeField] private TextMeshProUGUI cardText;
     [SerializeField] private GameObject damageCardSlot;
+    [SerializeField] private VFXTag vfxTag;
     [SerializeField] private CooldownIndicator cooldownIndicator;
 
     private WeaponCard weaponCardData;
@@ -138,7 +139,7 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
     public void ReceiveCardData(WeaponCard data)
     {
         weaponCardData = data;
-
+        vfxTag = data.VFXWeaponTag;
         cardName.text = data.Name;
         weaponArt.sprite = data.CardIcon;
         restrictionValue.text = data.RestrictionValue.ToString();
