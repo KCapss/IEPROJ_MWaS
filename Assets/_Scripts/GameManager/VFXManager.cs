@@ -12,24 +12,26 @@ public class VFXManager : MonoBehaviour
 
     private void Awake()
     {
-        for(int i = 0; i < vfxList.Count; i++)
+        for (int i = 0; i < vfxList.Count; i++)
         {
-            VFXTag tag = (VFXTag)i;
+            VFXTag tag = (VFXTag)i; //List are as follows: Sword_Slash, Short_Slash, Zwei_Slash, Dagger_Slash, PoisonD_Slash, Dual_Slash, Basic_Bow, Short_Bow, CrossBow
             vfxDictionary[tag] = vfxList[i];
+            Debug.Log(tag);
         }
     }
 
     public void PlayAttackVFX(VFXTag vfxTag, DamageType damageType, bool isCrit, Lane owner)
     {
         GameObject selectedVFX = vfxDictionary[vfxTag];
+        Debug.Log(vfxTag);
         Debug.Log(selectedVFX);
         selectedVFX.SetActive(true);
         //SpriteRenderer vfxSprite = selectedVFX.GetComponent<SpriteRenderer>();
         ParticleSystem vfxParticle = selectedVFX.GetComponent<ParticleSystem>();
-        
+
 
         // Bigger if Crit
-        if(isCrit)
+        if (isCrit)
         {
             selectedVFX.transform.localScale = setScale[1];
         }
@@ -39,7 +41,7 @@ public class VFXManager : MonoBehaviour
         }
 
         // Set Color According to Element
-        switch(damageType)
+        switch (damageType)
         {
             case DamageType.Fire:
                 //vfxSprite.color = Color.red; 
@@ -61,7 +63,7 @@ public class VFXManager : MonoBehaviour
                 vfxParticle.startColor = Color.white;
                 break;
         }
-        
+
         selectedVFX.GetComponent<ParticleAnimator>().SetOwner(owner);
     }
 }
