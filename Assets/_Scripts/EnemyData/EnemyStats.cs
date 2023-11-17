@@ -12,11 +12,14 @@ public class EnemyStats : ScriptableObject
     [SerializeField] private int _damageBase;
     [SerializeField] private int _damageIncrement;
     [SerializeField] Sprite _image;
+    [SerializeField] private GameObject _animationSprite;
 
     public string Name { get { return _name; } }
     public int HP { get { return _hp; } }
     public int DamageBase { get { return _damageBase; } }
     public int DamageIncrement { get {return _damageIncrement; } }
     public Sprite Sprite { get { return _image; } }
+
+    public GameObject AnimationSprite { get { return _animationSprite;} }
 
 }
