@@ -52,6 +52,7 @@ public class BasicEnemy : Enemy
 
     public void IncrementDamage()
     {
+        Debug.Log("Enemy Stat Up");
         _damageBase += _damageIncrement;
     }
 
@@ -65,8 +66,8 @@ public class BasicEnemy : Enemy
 
     public override void HeavyAction()
     {
-        //Add Animation Here
-        GameManager.Instance.battleManager.DealDamage(Faction.Player, DamageBase * 2);
+        float damage = DamageBase * 1.5f;
+        GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(damage));
         EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);
         StartCoroutine(TriggerCooldown(heavyCooldown));
     }
@@ -79,30 +80,27 @@ public class BasicEnemy : Enemy
 
     public override void Skill_1Action()
     {
-        //Add Animation Here
         IncrementDamage();
         StartCoroutine(TriggerCooldown(skill_1Cooldown));
     }
 
     public override void Skill_2Action()
     {
-        //Add Animation Here
+        float damage = DamageBase * 0.25f;
+        GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(damage));
+        EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);
+
         IncrementDamage();
+
         StartCoroutine(TriggerCooldown(skill_2Cooldown));
     }
 
     public override void Skill_3Action()
     {
-        //Add Animation Here
-        IncrementDamage();
-        StartCoroutine(TriggerCooldown(skill_3Cooldown));
     }
 
     public override void Skill_4Action()
     {
-        //Add Animation Here
-        IncrementDamage();
-        StartCoroutine(TriggerCooldown(skill_4Cooldown));
     }
 
     public override void ReceiveDamage(int damage)

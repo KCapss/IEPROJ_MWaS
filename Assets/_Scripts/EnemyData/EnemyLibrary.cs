@@ -106,8 +106,6 @@ public class EnemyLibrary : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-        
-        Debug.Log("Enemy Library Initialized");
 
         DontDestroyOnLoad(gameObject);
     }

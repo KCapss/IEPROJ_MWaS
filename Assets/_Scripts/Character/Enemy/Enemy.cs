@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public abstract class Enemy : Character
 {
+    [SerializeField] private AnticipationBar fillBar;
+
     [Header("Damage")]
     [SerializeField] protected int _damageBase;
     [SerializeField] protected int _damageIncrement;
@@ -139,7 +140,18 @@ public abstract class Enemy : Character
     protected IEnumerator TriggerCooldown(float cooldownTimer)
     {
         isOnCooldown = true;
-        yield return new WaitForSeconds(cooldownTimer);
+
+        float timer = 0f;
+        while (timer < cooldownTimer)
+        {
+            float fillAmount = timer / cooldownTimer;
+            fillBar.UpdateFillBar(fillAmount);
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        fillBar.UpdateFillBar(1f); // Ensure the fill bar is fully filled at the end
         isOnCooldown = false;
     }
 }

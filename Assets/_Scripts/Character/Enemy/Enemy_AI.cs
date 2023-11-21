@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Enemy_AI : MonoBehaviour
@@ -62,6 +63,7 @@ public class Enemy_AI : MonoBehaviour
     private float ScoreAction(AttackMode action)
     {
         float score = 0;
+
         float aggressiveMultiplier = beforeThresholdTimeMultiplier;
         if(timeElapsed >= timeBeforeAggro)
         {
@@ -101,6 +103,8 @@ public class Enemy_AI : MonoBehaviour
             default:
                 break;
         }
+
+        score *= UnityEngine.Random.Range(1.0f, 1.5f);
 
         return score;
     }
