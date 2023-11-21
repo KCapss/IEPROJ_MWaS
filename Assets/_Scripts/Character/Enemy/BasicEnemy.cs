@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class BasicEnemy : Enemy
 {
@@ -10,6 +11,7 @@ public class BasicEnemy : Enemy
     private void OnEnable()
     {
         healthBar = GameObject.Find("Enemy_HP_UI").GetComponent<HealthBar>();
+       
     }
 
     private void Update()
@@ -59,6 +61,14 @@ public class BasicEnemy : Enemy
     public override void LightAction()
     {
         //Add Animation Here
+        if (animator != null)
+        {
+            Debug.LogWarning("Attack Light");
+            animator.SetBool("isAttacking", true);
+            //animator.SetBool("isAttacking", false);
+        }
+
+
         GameManager.Instance.battleManager.DealDamage(Faction.Player, DamageBase);
         EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);
         StartCoroutine(TriggerCooldown(lightCooldown));
@@ -66,6 +76,13 @@ public class BasicEnemy : Enemy
 
     public override void HeavyAction()
     {
+        if (animator != null)
+        {
+            Debug.LogWarning("Attack Heavy");
+            animator.SetBool("isAttacking", true);
+            //animator.SetBool("isAttacking", false);
+        }
+
         float damage = DamageBase * 1.5f;
         GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(damage));
         EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);

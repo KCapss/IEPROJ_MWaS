@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.Animations;
+//using UnityEditor.Animations;
+using UnityEngine.Animations;
 using UnityEngine;
 
 public class EnemyAnimationControllerLibrary : MonoBehaviour
@@ -10,7 +11,7 @@ public class EnemyAnimationControllerLibrary : MonoBehaviour
     [SerializeField] 
     private AnimatorControllerDict aControllerDict;
 
-    public Dictionary<string, AnimatorController> enemyAnimator;
+    public Dictionary<string, RuntimeAnimatorController> enemyAnimator;
 
     // Start is called before the first frame update
     void Awake()
@@ -20,9 +21,8 @@ public class EnemyAnimationControllerLibrary : MonoBehaviour
 
     private void LoadEnemyAnimatorController()
     {
-        enemyAnimator = new Dictionary<string, AnimatorController>();
-        enemyAnimator = aControllerDict.ToDictionary();
-    }
+        enemyAnimator = new Dictionary<string, RuntimeAnimatorController>();
+        enemyAnimator = aControllerDict.ToDictionary(); }
 
 }
 
@@ -32,9 +32,9 @@ public class AnimatorControllerDict
     [SerializeField] 
     private AnimatorControllerDictItems[] aControllerItems;
 
-    public Dictionary<string, AnimatorController> ToDictionary()
+    public Dictionary<string, RuntimeAnimatorController> ToDictionary()
     {
-        Dictionary<string, AnimatorController> newAnimatorControllersDict = new Dictionary<string, AnimatorController>();
+        Dictionary<string, RuntimeAnimatorController> newAnimatorControllersDict = new Dictionary<string, RuntimeAnimatorController>();
 
         foreach (var item in aControllerItems)
         {
@@ -53,5 +53,5 @@ public class AnimatorControllerDictItems
     public string name;
 
     [SerializeField]
-    public AnimatorController controller;
+    public RuntimeAnimatorController controller;
 }
