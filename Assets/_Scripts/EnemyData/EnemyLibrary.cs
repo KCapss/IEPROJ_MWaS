@@ -95,6 +95,11 @@ public class EnemyLibrary : MonoBehaviour
         return 8 - stageNumber;
     }
 
+    public Levels GetCurrentLevel()
+    {
+        return tracker.GetCurrentLevel();
+    }
+
     private void CreateSingleton()
     {
         if (Instance == null)
