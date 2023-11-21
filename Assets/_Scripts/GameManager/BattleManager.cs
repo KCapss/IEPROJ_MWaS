@@ -19,8 +19,12 @@ public class BattleManager : MonoBehaviour
                 break;
         }
     }
+
+    public void RegisterEnemy(Enemy enemy)
+    {
+        this.enemy = enemy;
+    }
 }
-    
     
 
    
