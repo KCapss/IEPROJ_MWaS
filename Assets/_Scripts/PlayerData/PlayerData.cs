@@ -130,7 +130,7 @@ public class PlayerData : MonoBehaviour
 
     public int GetMaxHP()
     {
-        int currentLevel = EnemyLibrary.Instance.GetCurrentStageNumber() - 1;
+        int currentLevel = EnemyLibrary.Instance.GetCurrentStageNumber();
         return maxHP[currentLevel];
     }
 

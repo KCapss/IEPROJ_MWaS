@@ -7,6 +7,11 @@ public class BasicEnemy : Enemy
     [Header("Enemy Components")]
     [SerializeField] private Enemy_AI decisionMaking;
 
+    private void OnEnable()
+    {
+        healthBar = GameObject.Find("Enemy_HP_UI").GetComponent<HealthBar>();
+    }
+
     private void Update()
     {
         if (!isOnCooldown && !isDead)

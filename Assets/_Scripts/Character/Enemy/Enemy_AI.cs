@@ -29,16 +29,11 @@ public class Enemy_AI : MonoBehaviour
     [Tooltip("Time Elapsed Since Battle Start")]
     [SerializeField] private float timeElapsed;
     [SerializeField] private float timeBeforeAggro;
-    [SerializeField] private List<bool> isPlayerWeaponOnCooldown;
 
 
     private void Start()
     {
         playerReference = FindAnyObjectByType<Player>();
-        for (int i = 0; i < isPlayerWeaponOnCooldown.Count; i++)
-        {
-            isPlayerWeaponOnCooldown[i] = false;
-        }
     }
 
     private void Update()

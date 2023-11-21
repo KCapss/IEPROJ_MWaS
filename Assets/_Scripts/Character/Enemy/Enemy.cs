@@ -49,14 +49,13 @@ public abstract class Enemy : Character
 
     private void Start()
     {
+        GameManager.Instance.battleManager.RegisterEnemy(this);
         InitializeAttackActions();
         StartCoroutine(TriggerCooldown(2.0f));
     }
 
     private void OnEnable()
     {
-        EnemyData data = EnemyLibrary.Instance.GetNextEnemyData();
-        TransferStats(data);
 
         HealthCurrent = HealthMax;
     }
