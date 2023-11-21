@@ -16,7 +16,7 @@ public class VFXManager : MonoBehaviour
         {
             VFXTag tag = (VFXTag)i; //List are as follows: Sword_Slash, Short_Slash, Zwei_Slash, Dagger_Slash, PoisonD_Slash, Dual_Slash, Basic_Bow, Short_Bow, CrossBow
             vfxDictionary[tag] = vfxList[i];
-            Debug.Log(tag);
+            //Debug.Log(tag);
         }
     }
 

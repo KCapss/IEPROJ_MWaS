@@ -85,19 +85,19 @@ public class WeaponCard : MonoBehaviour
         float damage = 0;
 
         damage = (DamageMultiplier * damageCardValue) + DamageAdditional;
-        Debug.Log(_fullName + " calculated damage before floor = " + damage);
+        //.Log(_fullName + " calculated damage before floor = " + damage);
 
         int returnedDamage = 0;
 
         if(damageCardDamageType == _damageType)
         {                
-            returnedDamage = Mathf.FloorToInt(damage) * 2;
-            Debug.Log(_fullName + " calculated damage after floor and crit = " + returnedDamage);
+            returnedDamage = Mathf.FloorToInt(damage * 1.5f);
+            //Debug.Log(_fullName + " calculated damage after floor and crit = " + returnedDamage);
             return returnedDamage;
         }
 
         returnedDamage = Mathf.FloorToInt(damage);
-        Debug.Log(_fullName + " calculated damage after floor = " + returnedDamage);
+        //Debug.Log(_fullName + " calculated damage after floor = " + returnedDamage);
         return returnedDamage;
     }
 }
