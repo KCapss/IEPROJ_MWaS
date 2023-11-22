@@ -95,7 +95,12 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
             isCrit = true;
         }
 
-        GameManager.Instance.vfxManager.PlayAttackVFX(VFXTag.Sword_Slash, weaponCardData.DamageType, isCrit, weaponLane);
+        int weaponType = (int)weaponCardData.WeaponCardType / 8;
+
+        Debug.Log(weaponType);
+
+
+        GameManager.Instance.vfxManager.PlayAttackVFX((VFXTag)weaponType, weaponCardData.DamageType, isCrit, weaponLane);
     }
 
     public void AttackSequence(Parameters param)

@@ -51,17 +51,17 @@ public enum AudioType
     BGM = 0 
 }
 
-public enum VFXTag
+public enum VFXTag : int
 {
-    Sword_Slash = 0,
-    Short_Slash,
-    Zwei_Slash,
-    Dagger_Slash,
+    Dagger_Slash = 0,
     PoisonD_Slash,
     Dual_Slash,
     Basic_Bow,
     Short_Bow,
     CrossBow,
+    Sword_Slash,
+    Short_Slash,
+    Zwei_Slash,
 }
 
 public enum PoolTag 
