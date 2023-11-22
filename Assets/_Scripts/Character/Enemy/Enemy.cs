@@ -13,7 +13,7 @@ public abstract class Enemy : Character
 
     [Header("Components")]
     /* Speed? as variable for all monster */
-    [SerializeField] private Animator animator = null;
+    [SerializeField] protected Animator animator = null;
     [SerializeField] private SpriteRenderer spriteRenderer = null;
 
     [Header("HEALTH BAR UI")]
@@ -72,7 +72,7 @@ public abstract class Enemy : Character
         //Checker if the ff:
         // 1. Sprite Chop is present
         // 2. AnimatorController IsPresent
-        //
+        
         if (enemyData.AnimationSprite != null && 
             EnemyLibrary.Instance.RetrieveEnemyAnimatorController(_name) != null)
         {
@@ -140,6 +140,7 @@ public abstract class Enemy : Character
     protected IEnumerator TriggerCooldown(float cooldownTimer)
     {
         isOnCooldown = true;
+
 
         float timer = 0f;
         while (timer < cooldownTimer)

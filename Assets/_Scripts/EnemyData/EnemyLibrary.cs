@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using UnityEditor.Animations;
+//using UnityEditor.Animations;
+using UnityEngine.Animations;
 using UnityEngine;
 
 public class EnemyLibrary : MonoBehaviour
@@ -16,7 +17,7 @@ public class EnemyLibrary : MonoBehaviour
     [SerializeField] private LevelTracker tracker;
     
     //Libary for the Animation:
-    private Dictionary<string, AnimatorController> enemAnimatorController;
+    private Dictionary<string, RuntimeAnimatorController> enemAnimatorController;
 
     private void Awake()
     {
@@ -26,7 +27,7 @@ public class EnemyLibrary : MonoBehaviour
 
     public void Initialize()
     {
-        enemAnimatorController = new Dictionary<string, AnimatorController>();
+        enemAnimatorController = new Dictionary<string, RuntimeAnimatorController>();
         enemAnimatorController = this.gameObject.GetComponent<EnemyAnimationControllerLibrary>().enemyAnimator;
     }
 
@@ -62,12 +63,12 @@ public class EnemyLibrary : MonoBehaviour
         return obj;
     }
 
-    public AnimatorController RetrieveEnemyAnimatorController(string key)
+    public RuntimeAnimatorController RetrieveEnemyAnimatorController(string key)
     {
         if(enemAnimatorController == null)
             Initialize();
 
-        AnimatorController enemAnimator = enemAnimatorController[key];
+        RuntimeAnimatorController enemAnimator = enemAnimatorController[key];
 
         if (enemAnimator)
             return enemAnimator;
