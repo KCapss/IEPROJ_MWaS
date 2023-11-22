@@ -28,7 +28,7 @@ public class Character : MonoBehaviour
         set => _sprite = value;
     }
     public virtual void Kill() {}
-    public virtual void ReceiveDamage(int damage) 
+    public virtual void ReceiveDamage(int damage, DamageType damageType) 
     {
         HealthCurrent -= damage;
         Debug.Log("DAMAGED RECIEVED: " + damage.ToString());

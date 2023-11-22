@@ -6,16 +6,16 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private Player player;
 
     /* Replace Faction with Character Class */
-    public void DealDamage(Faction target, int damage)
+    public void DealDamage(Faction target, int damage, DamageType damageType)
     {
         switch(target)
         {
             case Faction.Player: 
-                player.ReceiveDamage(damage); 
+                player.ReceiveDamage(damage, damageType); 
                 break;
 
             case Faction.Enemy:
-                enemy.ReceiveDamage(damage);
+                enemy.ReceiveDamage(damage, damageType);
                 break;
         }
     }

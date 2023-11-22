@@ -101,6 +101,11 @@ public class EnemyLibrary : MonoBehaviour
         return tracker.GetCurrentLevel();
     }
 
+    public void SaveCurrentProgress()
+    {
+        tracker.PassLevel(tracker.GetCurrentLevel());
+    }
+
     private void CreateSingleton()
     {
         if (Instance == null)

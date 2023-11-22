@@ -46,11 +46,12 @@ public class LevelManager : MonoBehaviour
         if(EnemyLibrary.Instance.GetRemainingStageCount() > 0) 
         {
             //Disable Enemy & Player if needed
-            OpenWeaponRewards();           
+            OpenWeaponRewards();
         }
         else
         {
             // Player Defeats the Boss
+            EnemyLibrary.Instance.SaveCurrentProgress();
             EnemyLibrary.Instance.ResetCurrentStageNumber();
             SceneManager.LoadScene(MyStrings.MainMenu);
         }

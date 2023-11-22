@@ -41,7 +41,10 @@ public class BasicEnemy : Enemy
     {
         //this will trigger the death animation and progress to next enemies
         Debug.LogError("Enemy Died");
-        StartCoroutine(DeathSequence());
+        if(!isDead)
+        {
+            StartCoroutine(DeathSequence());
+        }
     } 
 
     IEnumerator DeathSequence()
@@ -68,8 +71,8 @@ public class BasicEnemy : Enemy
             //animator.SetBool("isAttacking", false);
         }
 
-
-        GameManager.Instance.battleManager.DealDamage(Faction.Player, DamageBase);
+        float damage = DamageBase * Random.Range(0.85f, 1.0f);
+        GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(damage), DamageType.NONE);
         EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);
         StartCoroutine(TriggerCooldown(lightCooldown));
     }
@@ -83,15 +86,14 @@ public class BasicEnemy : Enemy
             //animator.SetBool("isAttacking", false);
         }
 
-        float damage = DamageBase * 1.5f;
-        GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(damage));
+        float damage = DamageBase * 1.5f * Random.Range(0.85f, 1.0f);
+        GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(damage), DamageType.NONE);
         EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);
         StartCoroutine(TriggerCooldown(heavyCooldown));
     }
 
     public override void WaitAction()
     {
-        Debug.Log("Wait");
         StartCoroutine(TriggerCooldown(waitCooldown));
     }
 
@@ -104,7 +106,7 @@ public class BasicEnemy : Enemy
     public override void Skill_2Action()
     {
         float damage = DamageBase * 0.25f;
-        GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(damage));
+        GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(damage), DamageType.NONE);
         EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);
 
         IncrementDamage();
@@ -120,9 +122,9 @@ public class BasicEnemy : Enemy
     {
     }
 
-    public override void ReceiveDamage(int damage)
+    public override void ReceiveDamage(int damage, DamageType damageType)
     {
-        base.ReceiveDamage(damage);
+        base.ReceiveDamage(damage, damageType);
         healthBar.UpdateHealthBar(HealthCurrent, HealthMax);
     }
 

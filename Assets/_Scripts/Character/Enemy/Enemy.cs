@@ -131,9 +131,9 @@ public abstract class Enemy : Character
 
     public abstract void Skill_4Action();
 
-    public override void ReceiveDamage(int damage)
+    public override void ReceiveDamage(int damage, DamageType damageType)
     {
-        base.ReceiveDamage(damage);
+        base.ReceiveDamage(damage, damageType);
         healthBar.UpdateHealthBar(HealthCurrent, HealthMax);
     }
 
