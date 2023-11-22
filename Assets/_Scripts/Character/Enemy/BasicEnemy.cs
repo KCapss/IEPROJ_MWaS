@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class BasicEnemy : Enemy
 {
     [Header("Enemy Components")]
     [SerializeField] private Enemy_AI decisionMaking;
+
+    private void OnEnable()
+    {
+        healthBar = GameObject.Find("Enemy_HP_UI").GetComponent<HealthBar>();
+       
+    }
 
     private void Update()
     {
@@ -47,12 +54,21 @@ public class BasicEnemy : Enemy
 
     public void IncrementDamage()
     {
+        Debug.Log("Enemy Stat Up");
         _damageBase += _damageIncrement;
     }
 
     public override void LightAction()
     {
         //Add Animation Here
+        if (animator != null)
+        {
+            Debug.LogWarning("Attack Light");
+            animator.SetBool("isAttacking", true);
+            //animator.SetBool("isAttacking", false);
+        }
+
+
         GameManager.Instance.battleManager.DealDamage(Faction.Player, DamageBase);
         EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);
         StartCoroutine(TriggerCooldown(lightCooldown));
@@ -60,8 +76,15 @@ public class BasicEnemy : Enemy
 
     public override void HeavyAction()
     {
-        //Add Animation Here
-        GameManager.Instance.battleManager.DealDamage(Faction.Player, DamageBase * 2);
+        if (animator != null)
+        {
+            Debug.LogWarning("Attack Heavy");
+            animator.SetBool("isAttacking", true);
+            //animator.SetBool("isAttacking", false);
+        }
+
+        float damage = DamageBase * 1.5f;
+        GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(damage));
         EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);
         StartCoroutine(TriggerCooldown(heavyCooldown));
     }
@@ -74,30 +97,27 @@ public class BasicEnemy : Enemy
 
     public override void Skill_1Action()
     {
-        //Add Animation Here
         IncrementDamage();
         StartCoroutine(TriggerCooldown(skill_1Cooldown));
     }
 
     public override void Skill_2Action()
     {
-        //Add Animation Here
+        float damage = DamageBase * 0.25f;
+        GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(damage));
+        EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);
+
         IncrementDamage();
+
         StartCoroutine(TriggerCooldown(skill_2Cooldown));
     }
 
     public override void Skill_3Action()
     {
-        //Add Animation Here
-        IncrementDamage();
-        StartCoroutine(TriggerCooldown(skill_3Cooldown));
     }
 
     public override void Skill_4Action()
     {
-        //Add Animation Here
-        IncrementDamage();
-        StartCoroutine(TriggerCooldown(skill_4Cooldown));
     }
 
     public override void ReceiveDamage(int damage)

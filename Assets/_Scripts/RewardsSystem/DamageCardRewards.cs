@@ -17,7 +17,7 @@ public class DamageCardRewards : MonoBehaviour
         rewards = CardLibrary.Instance.DamageLibrary.GetDamageCardBucket(currentTier);
         
         bucketName.text = rewards._name;
-        Debug.Log(rewards._name);
+        //Debug.Log(rewards._name);
 
         for(int i = 0; i < slots.Count; i++)
         {

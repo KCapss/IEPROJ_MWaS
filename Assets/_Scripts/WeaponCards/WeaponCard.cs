@@ -15,6 +15,7 @@ public class WeaponCard : MonoBehaviour
 
     [Header("Weapon Components")]
     [SerializeField] private WeaponTag _weaponCardType;
+    [SerializeField] private VFXTag _vfxWeaponTag;
     [SerializeField] private Sprite _cardIcon;
     [SerializeField] private DamageType _damageType;
     [SerializeField] private Sprite _cardBackground;
@@ -27,7 +28,8 @@ public class WeaponCard : MonoBehaviour
     public int RestrictionValue => _restrictionValue;
     public RestrictionType RestrictionType => _restrictionType;
     public float Cooldown => _cooldown;
-    public WeaponTag WeaponCardType => _weaponCardType; 
+    public WeaponTag WeaponCardType => _weaponCardType;
+    public VFXTag VFXWeaponTag => _vfxWeaponTag;
     public Sprite CardIcon => _cardIcon;
     public DamageType DamageType => _damageType;
     public Sprite CardBackground => _cardBackground;
@@ -44,6 +46,7 @@ public class WeaponCard : MonoBehaviour
         _restrictionType = weaponData.RestrictionType;
         _cooldown = weaponData.Cooldown;
         _weaponCardType = weaponData.WeaponCardType;
+        _vfxWeaponTag= weaponData.VFXWeaponTag;
         _cardIcon = weaponData.CardIcon;
         _damageType = damageType;
         _cardBackground = cardBackground;
@@ -82,19 +85,19 @@ public class WeaponCard : MonoBehaviour
         float damage = 0;
 
         damage = (DamageMultiplier * damageCardValue) + DamageAdditional;
-        Debug.Log(_fullName + " calculated damage before floor = " + damage);
+        //.Log(_fullName + " calculated damage before floor = " + damage);
 
         int returnedDamage = 0;
 
         if(damageCardDamageType == _damageType)
         {                
-            returnedDamage = Mathf.FloorToInt(damage) * 2;
-            Debug.Log(_fullName + " calculated damage after floor and crit = " + returnedDamage);
+            returnedDamage = Mathf.FloorToInt(damage * 1.5f);
+            //Debug.Log(_fullName + " calculated damage after floor and crit = " + returnedDamage);
             return returnedDamage;
         }
 
         returnedDamage = Mathf.FloorToInt(damage);
-        Debug.Log(_fullName + " calculated damage after floor = " + returnedDamage);
+        //Debug.Log(_fullName + " calculated damage after floor = " + returnedDamage);
         return returnedDamage;
     }
 }

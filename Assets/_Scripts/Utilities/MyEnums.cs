@@ -51,9 +51,17 @@ public enum AudioType
     BGM = 0 
 }
 
-public enum VFXTag
+public enum VFXTag : int
 {
-    Sword_Slash = 0
+    Dagger_Slash = 0,
+    PoisonD_Slash,
+    Dual_Slash,
+    Basic_Bow,
+    Short_Bow,
+    CrossBow,
+    Sword_Slash,
+    Short_Slash,
+    Zwei_Slash,
 }
 
 public enum PoolTag 
@@ -72,5 +80,13 @@ public enum BucketTier
     Tier5
 }
 
+public enum Levels
+{
+    TUTORIAL = 0,
+    LEVEL_1,
+    LEVEL_2,
+    LEVEL_3,
+    LEVEL_4
+}
 
 

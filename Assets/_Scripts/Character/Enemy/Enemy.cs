@@ -5,13 +5,15 @@ using UnityEngine;
 
 public abstract class Enemy : Character
 {
+    [SerializeField] private AnticipationBar fillBar;
+
     [Header("Damage")]
     [SerializeField] protected int _damageBase;
     [SerializeField] protected int _damageIncrement;
 
     [Header("Components")]
     /* Speed? as variable for all monster */
-    [SerializeField] private Animator animator = null;
+    [SerializeField] protected Animator animator = null;
     [SerializeField] private SpriteRenderer spriteRenderer = null;
 
     [Header("HEALTH BAR UI")]
@@ -27,6 +29,9 @@ public abstract class Enemy : Character
     [SerializeField] protected float skill_4Cooldown = 1.5f;
     [SerializeField] protected float waitCooldown = 1.5f;
     [SerializeField] protected bool isOnCooldown = false;
+
+    [Header("Animation Sprite")] //Exclusive for Enemies
+    [SerializeField] protected GameObject spriteAnimationObject;
 
     protected delegate void AttackAction();
     protected Dictionary<AttackMode, AttackAction> attackActions = new Dictionary<AttackMode, AttackAction>();
@@ -45,14 +50,13 @@ public abstract class Enemy : Character
 
     private void Start()
     {
+        GameManager.Instance.battleManager.RegisterEnemy(this);
         InitializeAttackActions();
         StartCoroutine(TriggerCooldown(2.0f));
     }
 
     private void OnEnable()
     {
-        EnemyData data = EnemyLibrary.Instance.GetNextEnemyData();
-        TransferStats(data);
 
         HealthCurrent = HealthMax;
     }
@@ -65,7 +69,31 @@ public abstract class Enemy : Character
         _damageIncrement = enemyData.DamageIncrement;
         _sprite = enemyData.Sprite;
 
-        spriteRenderer.sprite = _sprite;
+        //Checker if the ff:
+        // 1. Sprite Chop is present
+        // 2. AnimatorController IsPresent
+        
+        if (enemyData.AnimationSprite != null && 
+            EnemyLibrary.Instance.RetrieveEnemyAnimatorController(_name) != null)
+        {
+            spriteRenderer.sprite = null;
+            Debug.Log("Animation Sprite Found");
+
+            spriteAnimationObject = enemyData.AnimationSprite;
+            Instantiate(spriteAnimationObject, this.gameObject.transform, false);
+
+            spriteAnimationObject.AddComponent<Animator>();
+            spriteAnimationObject.GetComponent<Animator>().runtimeAnimatorController = 
+                EnemyLibrary.Instance.RetrieveEnemyAnimatorController(_name);
+        }
+
+        else
+        {
+            Debug.Log("No Animation Sprite Found");
+            spriteRenderer.sprite = _sprite;
+        }
+
+        
 
         InitiateCharacter();
     }
@@ -112,7 +140,19 @@ public abstract class Enemy : Character
     protected IEnumerator TriggerCooldown(float cooldownTimer)
     {
         isOnCooldown = true;
-        yield return new WaitForSeconds(cooldownTimer);
+
+
+        float timer = 0f;
+        while (timer < cooldownTimer)
+        {
+            float fillAmount = timer / cooldownTimer;
+            fillBar.UpdateFillBar(fillAmount);
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        fillBar.UpdateFillBar(1f); // Ensure the fill bar is fully filled at the end
         isOnCooldown = false;
     }
 }

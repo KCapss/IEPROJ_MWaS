@@ -15,6 +15,7 @@ public class WeaponCard_SO : ScriptableObject
 
     [Header("Weapon Components")]
     [SerializeField] private WeaponTag _weaponCardType;
+    [SerializeField] private VFXTag _vfxWeaponTag;
     [SerializeField] private Sprite _cardIcon;
     [SerializeField] private string _cardText;
 
@@ -25,7 +26,8 @@ public class WeaponCard_SO : ScriptableObject
     public int RestrictionValue => _restrictionValue;
     public RestrictionType RestrictionType => _restrictionType;
     public float Cooldown => _cooldown;
-    public WeaponTag WeaponCardType => _weaponCardType; 
+    public WeaponTag WeaponCardType => _weaponCardType;
+    public VFXTag VFXWeaponTag => _vfxWeaponTag;
     public Sprite CardIcon => _cardIcon;
     public string CardText => _cardText;
 }

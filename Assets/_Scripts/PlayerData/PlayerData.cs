@@ -43,6 +43,30 @@ public class PlayerData : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void OnReset()
+    {
+        weaponList[0] = WeaponTag.BasicDagger_0;
+        weaponList[1] = WeaponTag.BasicSword_0;
+        weaponList[2] = WeaponTag.BasicBow_0; 
+
+        for(int i = 0; i < damageTypes.Count; i++)
+        {
+            damageTypes[i] = (DamageType)UnityEngine.Random.Range(0, 3);
+        }
+
+        deckElements.Clear();
+
+        deckElements.Add(DamageTag.Fire_1);
+        deckElements.Add(DamageTag.Fire_2);
+        deckElements.Add(DamageTag.Fire_3);
+        deckElements.Add(DamageTag.Water_1);
+        deckElements.Add(DamageTag.Water_2);
+        deckElements.Add(DamageTag.Water_3);
+        deckElements.Add(DamageTag.Wind_1);
+        deckElements.Add(DamageTag.Wind_2);
+        deckElements.Add(DamageTag.Wind_3);
+    }
+
     // Gets Data of Damage Cards in Deck
     public List<DamageCard> GetDeckElements()
     {
@@ -130,7 +154,7 @@ public class PlayerData : MonoBehaviour
 
     public int GetMaxHP()
     {
-        int currentLevel = EnemyLibrary.Instance.GetCurrentStageNumber() - 1;
+        int currentLevel = EnemyLibrary.Instance.GetCurrentStageNumber();
         return maxHP[currentLevel];
     }
 

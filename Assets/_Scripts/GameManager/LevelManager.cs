@@ -31,6 +31,7 @@ public class LevelManager : MonoBehaviour
     {
         // Add Lose Screen before loading, or go to loading screen
         EnemyLibrary.Instance.ResetCurrentStageNumber();
+        PlayerData.Instance.OnReset();
         if(AudioManager.Instance != null)
         {
             AudioManager.Instance.StopBGM(MyStrings.Audio.Level1Theme);

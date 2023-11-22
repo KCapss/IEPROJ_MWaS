@@ -1,33 +1,83 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+//using UnityEditor.Animations;
+using UnityEngine.Animations;
 using UnityEngine;
 
 public class EnemyLibrary : MonoBehaviour
 {
     public static EnemyLibrary Instance;
 
-    [SerializeField] List<EnemyStats> enemyLibrary;
+    [SerializeField] List<GameObject> tutorialEnemies;
+    [SerializeField] List<GameObject> Level1Enemies;
+    [SerializeField] List<GameObject> level2Enemies;
+    [SerializeField] List<GameObject> level3Enemies;
+    [SerializeField] List<GameObject> level4Enemies;
+
     [SerializeField] private int stageNumber = 0;
+    [SerializeField] private LevelTracker tracker;
+    
+    //Libary for the Animation:
+    private Dictionary<string, RuntimeAnimatorController> enemAnimatorController;
 
     private void Awake()
     {
         CreateSingleton();
     }
 
-    public EnemyData GetNextEnemyData()
+
+    public void Initialize()
     {
-        EnemyData data = new EnemyData();
+        enemAnimatorController = new Dictionary<string, RuntimeAnimatorController>();
+        enemAnimatorController = this.gameObject.GetComponent<EnemyAnimationControllerLibrary>().enemyAnimator;
+    }
 
-        data.Name = enemyLibrary[stageNumber].Name;
-        data.HP = enemyLibrary[stageNumber].HP;
-        data.DamageBase = enemyLibrary[stageNumber].DamageBase;
-        data.DamageIncrement = enemyLibrary[stageNumber].DamageIncrement;
-        data.Sprite = enemyLibrary[stageNumber].Sprite;
+    public GameObject GetNextEnemyData()
+    {
+        var currentLevel = tracker.GetCurrentLevel();
+        GameObject obj;
+
+        switch (currentLevel)
+        {
+            case Levels.LEVEL_1:
+                obj = Level1Enemies[stageNumber];
+                break;
+
+            case Levels.LEVEL_2:
+                obj = level2Enemies[stageNumber];
+                break;
+
+            case Levels.LEVEL_3:
+                obj = level3Enemies[stageNumber];
+                break;
+
+            case Levels.LEVEL_4:
+                obj = level4Enemies[stageNumber];
+                break;
+
+            default:
+                obj = tutorialEnemies[stageNumber];
+                break;
+        }
+
         stageNumber++;
+        return obj;
+    }
 
-        return data;
+    public RuntimeAnimatorController RetrieveEnemyAnimatorController(string key)
+    {
+        if(enemAnimatorController == null)
+            Initialize();
+
+        RuntimeAnimatorController enemAnimator = enemAnimatorController[key];
+
+        if (enemAnimator)
+            return enemAnimator;
+
+        else
+        {
+            Debug.LogError($"No Animator Controller for {key}");
+            return null;
+        }
     }
 
     public int GetCurrentStageNumber() 
@@ -43,7 +93,12 @@ public class EnemyLibrary : MonoBehaviour
 
     public int GetRemainingStageCount()
     {
-        return enemyLibrary.Count;
+        return 8 - stageNumber;
+    }
+
+    public Levels GetCurrentLevel()
+    {
+        return tracker.GetCurrentLevel();
     }
 
     private void CreateSingleton()
@@ -52,8 +107,6 @@ public class EnemyLibrary : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-        
-        Debug.Log("Enemy Library Initialized");
 
         DontDestroyOnLoad(gameObject);
     }
