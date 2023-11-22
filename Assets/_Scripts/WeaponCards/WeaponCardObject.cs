@@ -122,9 +122,16 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
     // Consume Damage Card and Deal Damage
     private void FireChamber()
     {
+        bool isSameType = false;
+
+        if(weaponCardData.DamageType == damageCardInChamber.CardData.DamageType)
+        {
+            isSameType = true;
+        }
         //add animation and sound play here
         GameManager.Instance.battleManager.DealDamage(Faction.Enemy, 
-            weaponCardData.CalculateDamage(damage, damageCardInChamber.CardData.DamageType));
+            weaponCardData.CalculateDamage(damage, damageCardInChamber.CardData.DamageType), 
+            isSameType ? weaponCardData.DamageType : DamageType.NONE);
 
         //Reset Stuff
         damageCardInChamber.Destroy();

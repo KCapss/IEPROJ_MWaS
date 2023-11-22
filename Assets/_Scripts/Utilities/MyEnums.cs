@@ -21,7 +21,8 @@ public enum RestrictionType
 }
 
 public enum DamageType 
-{   Fire = 0, 
+{   NONE = -1,
+    Fire = 0, 
     Water, 
     Wind
 };
