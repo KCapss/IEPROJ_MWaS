@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private List<WeaponCardRewards> weaponsPanelList;
     [SerializeField] private List<DamageCardRewards> damagePanelList;
     [SerializeField] private GameObject LoadingScreen;
+
+    [SerializeField] private GameObject endScreen;
+    [SerializeField] private TextMeshProUGUI endText;
 
     private void Awake()
     {
@@ -36,8 +40,11 @@ public class LevelManager : MonoBehaviour
         {
             AudioManager.Instance.StopBGM(MyStrings.Audio.Level1Theme);
         }
-        
-        SceneManager.LoadScene(MyStrings.MainMenu);
+
+        EnemyLibrary.Instance.ResetCurrentStageNumber();
+        endScreen.SetActive(true);
+        endText.text = "YOU LOST!";
+        //SceneManager.LoadScene(MyStrings.MainMenu);
     }
 
     public void PlayerWin()
@@ -53,7 +60,22 @@ public class LevelManager : MonoBehaviour
             // Player Defeats the Boss
             EnemyLibrary.Instance.SaveCurrentProgress();
             EnemyLibrary.Instance.ResetCurrentStageNumber();
-            SceneManager.LoadScene(MyStrings.MainMenu);
+            endScreen.SetActive(true);
+
+            string extraText;
+            switch(EnemyLibrary.Instance.GetCurrentLevel())
+            {
+                case Levels.LEVEL_4:
+                    extraText = "GAME END!";
+                    break;
+
+                default:
+                    extraText = "NEXT AREA UNLOCKED";
+                    break;
+            }
+
+            endText.text = "YOU WIN!" + "\n" + extraText;
+            //SceneManager.LoadScene(MyStrings.MainMenu);
         }
     }
 
@@ -100,5 +122,10 @@ public class LevelManager : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void ToMainMenuPressed()
+    {
+        SceneManager.LoadScene(MyStrings.MainMenu);
     }
 }
