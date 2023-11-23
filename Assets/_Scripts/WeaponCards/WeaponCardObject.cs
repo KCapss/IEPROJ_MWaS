@@ -122,16 +122,29 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
     // Consume Damage Card and Deal Damage
     private void FireChamber()
     {
-        //add animation and sound play here
-        GameManager.Instance.battleManager.DealDamage(Faction.Enemy, 
-            weaponCardData.CalculateDamage(damage, damageCardInChamber.CardData.DamageType));
+        bool isSameType = false;
 
-        //Reset Stuff
-        damageCardInChamber.Destroy();
-        damageCardInChamber = null;
-        damage = 0;
+        //Add a checker to prevent any null reference pointer upon winning the battle
+        if (damageCardInChamber != null)
+        {
 
-        GameManager.Instance.damageCardManager.PlayerDrawCard();
+            if (weaponCardData.DamageType == damageCardInChamber.CardData.DamageType)
+            {
+                isSameType = true;
+            }
+
+            //add animation and sound play here
+            GameManager.Instance.battleManager.DealDamage(Faction.Enemy,
+                weaponCardData.CalculateDamage(damage, damageCardInChamber.CardData.DamageType),
+                isSameType ? weaponCardData.DamageType : DamageType.NONE);
+
+            //Reset Stuff
+            damageCardInChamber.Destroy();
+            damageCardInChamber = null;
+            damage = 0;
+
+            GameManager.Instance.damageCardManager.PlayerDrawCard();
+        }
     }
 
     IEnumerator StartCooldown()

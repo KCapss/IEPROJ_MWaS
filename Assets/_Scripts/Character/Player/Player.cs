@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Player : Character, IDamageable, IKillable
+public class Player : Character, IKillable
 {
     [Header("CharacterInformation")]
     [SerializeField] private Animator animator;
@@ -42,7 +39,7 @@ public class Player : Character, IDamageable, IKillable
         EventBroadcaster.Instance.PostEvent(EventNames.EndCondition.ON_LOSE);
     }
 
-    public void ReceiveDamage(int damage)
+    public void ReceiveDamage(int damage, DamageType damageType)
     {
         HealthCurrent -= damage;
 
