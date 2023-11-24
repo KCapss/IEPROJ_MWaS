@@ -19,16 +19,19 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
+        AudioManager.Instance.PlayUI_SFX("Button Press SFX");
         SceneManager.LoadScene(MyStrings.Play);
     }
 
     public void Quit()
     {
+        AudioManager.Instance.PlayUI_SFX("Button Press SFX");
         Application.Quit();
     }
 
     public void SettingsOpen()
     {
+        AudioManager.Instance.PlayUI_SFX("Button Press SFX");
         settingsMenu.SetActive(true);
         foreach(Button button in mainButtons)
         {
@@ -38,6 +41,7 @@ public class MainMenu : MonoBehaviour
 
     public void SettingsClose()
     {
+        AudioManager.Instance.PlayUI_SFX("Button Press SFX");
         settingsMenu.SetActive(false);
         foreach(Button button in mainButtons)
         {
@@ -47,6 +51,7 @@ public class MainMenu : MonoBehaviour
 
     public void ToggleDebugKill(bool isOn)
     {
+        AudioManager.Instance.PlayUI_SFX("Button Press SFX");
         if(isOn == true)
         {
             CheatsManager.Instance.DebugDamage = true;
@@ -61,6 +66,7 @@ public class MainMenu : MonoBehaviour
 
     public void ResetTutorial()
     {
+        AudioManager.Instance.PlayUI_SFX("Button Press SFX");
         PlayerPrefs.SetInt("tutorial", 0);
     }
 
