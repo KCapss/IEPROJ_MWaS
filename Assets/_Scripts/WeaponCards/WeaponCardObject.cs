@@ -99,8 +99,26 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
 
         Debug.Log(weaponType);
 
-
         GameManager.Instance.vfxManager.PlayAttackVFX((VFXTag)weaponType, weaponCardData.DamageType, isCrit, weaponLane);
+
+        int weaponArchetype =  (int)weaponCardData.WeaponCardType / 24;
+
+        string SFX_string;
+
+        if(weaponArchetype == 0)
+        {
+            SFX_string = "Dagger_SFX";
+        }
+        else if (weaponArchetype == 1)
+        {
+             SFX_string = "Bow_SFX";
+        }
+        else
+        {
+            SFX_string = "Sword_SFX";
+        }
+
+        AudioManager.Instance.PlaySFX(SFX_string);
     }
 
     public void AttackSequence(Parameters param)

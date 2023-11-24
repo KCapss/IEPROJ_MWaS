@@ -99,7 +99,7 @@ public class AudioManager : MonoBehaviour
         Debug.Log($"{s.name} Stopped");
     }
 
-    public Sound RetrieveSFX(string name)
+    public Sound PlaySFX(string name)
     {
         Sound s = Array.Find(SFX, sound => sound.name == name);
         if (s == null)
@@ -108,12 +108,18 @@ public class AudioManager : MonoBehaviour
             return null;
         }
         s.source.volume = s.volume * volumeSFXMultiplier;
-        //s.source.PlayOneShot(s.clip);
+        
+
+        if(!s.source.isPlaying)
+        {
+            s.source.Play();
+        }
+
         return s;
         
     }
 
-    public Sound RetrieveUI_SFX(string name)
+    public Sound PlayUI_SFX(string name)
     {
         Sound s = Array.Find(UI_SFX, sound => sound.name == name);
         if (s == null)
@@ -122,7 +128,12 @@ public class AudioManager : MonoBehaviour
             return null;
         }
         s.source.volume = s.volume * volumeUI_SFXMultiplier;
-        //s.source.PlayOneShot(s.clip);
+        
+        if(!s.source.isPlaying)
+        {
+            s.source.Play();
+        }
+
         return s;
        
     }
