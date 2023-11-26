@@ -24,6 +24,40 @@ public class LevelTracker : ScriptableObject
         }
     }
 
+    public void SelectLevel(Levels levelType)
+    {
+        switch (levelType)
+        {
+            case Levels.LEVEL_4: 
+                level4Passed = false;
+                level3Passed = true;
+                level2Passed = true;
+                level1Passed = true;
+                break;
+
+            case Levels.LEVEL_3:
+                level4Passed = false;
+                level3Passed = false;
+                level2Passed = true;
+                level1Passed = true;
+                break;
+
+            case Levels.LEVEL_2:
+                level4Passed = false;
+                level3Passed = false;
+                level2Passed = false;
+                level1Passed = true;
+                break;
+
+            case Levels.LEVEL_1:
+                level4Passed = false;
+                level3Passed = false;
+                level2Passed = false;
+                level1Passed = false;
+                break;
+        }
+    }
+
     public Levels GetCurrentLevel()
     {
         if(level4Passed) { return Levels.LEVEL_4; }

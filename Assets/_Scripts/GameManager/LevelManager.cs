@@ -126,6 +126,7 @@ public class LevelManager : MonoBehaviour
 
     public void ToMainMenuPressed()
     {
+        AudioManager.Instance.PlayUI_SFX("Button Press SFX");
         SceneManager.LoadScene(MyStrings.MainMenu);
     }
 }

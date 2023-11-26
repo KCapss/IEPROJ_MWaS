@@ -13,21 +13,26 @@ public class Elemental_Enemy : Enemy
     private void OnEnable()
     {
         healthBar = GameObject.Find("Enemy_HP_UI").GetComponent<HealthBar>();
+        SetStartingElement();
+    }
+
+    private void SetStartingElement()
+    {
         int randomValue = Random.Range(0, 2);
 
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-        if(randomValue == 0)
+        if (randomValue == 0)
         {
             spriteRenderer.color = Color.red;
             currentWeakness = DamageType.Fire;
         }
-        else if(randomValue == 1)
+        else if (randomValue == 1)
         {
             spriteRenderer.color = Color.blue;
             currentWeakness = DamageType.Water;
         }
-        else 
+        else
         {
             spriteRenderer.color = Color.green;
             currentWeakness = DamageType.Wind;
@@ -126,7 +131,7 @@ public class Elemental_Enemy : Enemy
     public override void Skill_1Action()
     {
         IncrementDamage();
-        StartCoroutine(TriggerCooldown(skill_1Cooldown));
+        currentCoroutine = StartCoroutine(TriggerCooldown(skill_1Cooldown));
     }
 
     public override void Skill_2Action()
@@ -137,13 +142,13 @@ public class Elemental_Enemy : Enemy
 
         IncrementDamage();
 
-        StartCoroutine(TriggerCooldown(skill_2Cooldown));
+        currentCoroutine = StartCoroutine(TriggerCooldown(skill_2Cooldown));
     }
 
     public override void Skill_3Action()
     {
         ChangeWeakness();
-        StartCoroutine (TriggerCooldown(skill_3Cooldown));
+        currentCoroutine = StartCoroutine (TriggerCooldown(skill_3Cooldown));
     }
 
     public override void Skill_4Action()

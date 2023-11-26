@@ -90,4 +90,12 @@ public enum Levels
     LEVEL_4
 }
 
+public enum SFXType : int
+{
+    BUTTON = 1,
+    Sword,
+    Dagger, 
+    Bow
+}
+
 

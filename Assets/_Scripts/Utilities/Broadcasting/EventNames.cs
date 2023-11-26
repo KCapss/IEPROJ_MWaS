@@ -22,6 +22,7 @@ public class EventNames
 		public const string WEAPON_REWARD_OPEN = "WEAPON_REWARD_SELECTED";
 		public const string CONTINUE = "CONTINUE";
         public const string END_TURN = "END_TURN";
+		public const string SHIELDS_UP = "SHIELDS_UP";
 	}
 
 	public class Hotkeys
