@@ -7,6 +7,7 @@ public class Shielded_Enemy : Enemy
 [Header("Enemy Components")]
     [SerializeField] private Enemy_AI decisionMaking;
     [SerializeField] private bool isShielded = false;
+    
 
     private void OnEnable()
     {
