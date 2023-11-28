@@ -26,12 +26,12 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
 
     private void Awake()
     {
-        EventBroadcaster.Instance.AddObserver(EventNames.AttackSequence.ATTACK_ANIMATION_END, AttackSequence);
+        //EventBroadcaster.Instance.AddObserver(EventNames.AttackSequence.ATTACK_ANIMATION_END, AttackSequence);
     }
 
     private void OnDestroy()
     {
-        EventBroadcaster.Instance.RemoveObserver(EventNames.AttackSequence.ATTACK_ANIMATION_END);
+       //EventBroadcaster.Instance.RemoveObserver(EventNames.AttackSequence.ATTACK_ANIMATION_END);
     }
 
     public DamageCardObject DamageCardInChamber 
@@ -80,6 +80,7 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
                     damage = damageCard.CardData.DamageValue;
 
                     PlayAttackSequence();
+                    AttackSequence();
                 }
             }
         }
@@ -121,21 +122,30 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
         AudioManager.Instance.PlaySFX(SFX_string);
     }
 
-    public void AttackSequence(Parameters param)
+    public void AttackSequence()
     {
-        if(!gameObject.activeInHierarchy) { return; }
+        //if(!gameObject.activeInHierarchy) { return; }
 
-        WeaponCardSlot occupiedSlot = GetComponentInParent<WeaponCardSlot>();
-        Lane weaponLane = occupiedSlot.Lane;
-        int activatedLane = param.GetIntExtra(EventNames.AttackSequence.ATTACK_ANIMATION_END, -1);
+        //WeaponCardSlot occupiedSlot = GetComponentInParent<WeaponCardSlot>();
+        //Lane weaponLane = occupiedSlot.Lane;
+        //int activatedLane = param.GetIntExtra(EventNames.AttackSequence.ATTACK_ANIMATION_END, -1);
 
-        if(activatedLane == (int)weaponLane)
-        {
-            FireChamber();
-            cooldownIndicator.StartCooldownIndicator(weaponCardData.Cooldown);
-            StartCoroutine(StartCooldown());
-        }
+        //if(activatedLane == (int)weaponLane)
+        //{
+            
+            //cooldownIndicator.StartCooldownIndicator(weaponCardData.Cooldown);
+            StartCoroutine(StartCooldownIndicator(weaponCardData.Cooldown));
+        //}
     }
+
+   IEnumerator StartCooldownIndicator(float cooldownTime)
+    {
+        yield return new WaitForEndOfFrame();
+        FireChamber();
+        //cooldownIndicator.StartCooldownIndicator(cooldownTime);
+        yield return StartCoroutine(StartCooldown(cooldownTime));
+    }
+
 
     // Consume Damage Card and Deal Damage
     private void FireChamber()
@@ -165,10 +175,23 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
         }
     }
 
-    IEnumerator StartCooldown()
+    IEnumerator StartCooldown(float cooldownTime)
     {
+        if (isOnCooldown) yield break;
+
         isOnCooldown = true;
-        yield return new WaitForSeconds(weaponCardData.Cooldown);
+
+        float startTime = Time.time;
+        float elapsedTime = 0.0f;
+
+        while (elapsedTime < cooldownTime)
+        {
+            elapsedTime = Time.time - startTime;
+            float completionRate = 1.0f - Mathf.Clamp01(elapsedTime / cooldownTime);
+            cooldownIndicator.SetFillAmount(completionRate);
+            yield return null;
+        }
+
         isOnCooldown = false;
     }
 

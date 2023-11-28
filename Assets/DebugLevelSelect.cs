@@ -1,13 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DebugLevelSelect : MonoBehaviour
 {
     [SerializeField] private LevelTracker levelTracker;
-    [SerializeField] private Dropdown dropdown;
+    [SerializeField] private TMP_Dropdown dropdown;
 
     private void Start()
     {
