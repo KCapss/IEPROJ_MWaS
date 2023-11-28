@@ -27,6 +27,8 @@ public class PlayerData : MonoBehaviour
 
     private void Start()
     {
+        if(EnemyLibrary.Instance.GetCurrentStageNumber() != 0) { return; }
+
         for(int i = 0; i < damageTypes.Count; i++)
         {
             damageTypes[i] = (DamageType)UnityEngine.Random.Range(0, 3);
