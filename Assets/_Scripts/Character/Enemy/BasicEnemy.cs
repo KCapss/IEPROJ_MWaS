@@ -73,7 +73,7 @@ public class BasicEnemy : Enemy
         }
 
         float damage = DamageBase * Random.Range(0.85f, 1.0f);
-        int nDamage = Mathf.Min(Mathf.FloorToInt(damage), damageInitial * 5);
+        int nDamage = Mathf.Min(Mathf.FloorToInt(damage), damageInitial * 2);
         GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(nDamage), DamageType.NONE);
         EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);
         StartCoroutine(TriggerCooldown(lightCooldown));
@@ -89,7 +89,7 @@ public class BasicEnemy : Enemy
         }
 
         float damage = DamageBase * 1.5f * Random.Range(0.85f, 1.0f);
-        int nDamage = Mathf.Min(Mathf.FloorToInt(damage), damageInitial * 5);
+        int nDamage = Mathf.Min(Mathf.FloorToInt(damage), damageInitial * 2);
         GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(nDamage), DamageType.NONE);
         EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);
         StartCoroutine(TriggerCooldown(heavyCooldown));
@@ -109,7 +109,7 @@ public class BasicEnemy : Enemy
     public override void Skill_2Action()
     {
         float damage = DamageBase * 0.25f;
-        int nDamage = Mathf.Min(Mathf.FloorToInt(damage), damageInitial * 5);
+        int nDamage = Mathf.Min(Mathf.FloorToInt(damage), damageInitial * 2);
         GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(nDamage), DamageType.NONE);
         EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);
 
