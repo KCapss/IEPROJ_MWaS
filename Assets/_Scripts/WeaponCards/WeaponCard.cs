@@ -51,32 +51,6 @@ public class WeaponCard : MonoBehaviour
         _damageType = damageType;
         _cardBackground = cardBackground;
         _cardText = weaponData.CardText;
-
-        BuildFullCardName();
-    }
-
-    public void BuildFullCardName()
-    {
-        string prefix = "";
-
-        switch (_damageType)
-        {
-            case DamageType.Fire:
-                prefix = "Fiery";
-                break;
-
-            case DamageType.Water:
-                prefix = "Chilled";
-                break;
-
-            case DamageType.Wind:
-                prefix = "Tempest";
-                break;
-        }
-
-        // If level > 0, add +[level]
-        string upgradeLevel = _level > 0 ? ("+" + _level.ToString()) : "";
-        _fullName = prefix + " " + _name + upgradeLevel;
     }
 
 

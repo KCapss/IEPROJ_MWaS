@@ -60,6 +60,7 @@ public class LevelManager : MonoBehaviour
             // Player Defeats the Boss
             EnemyLibrary.Instance.SaveCurrentProgress();
             EnemyLibrary.Instance.ResetCurrentStageNumber();
+            PlayerData.Instance.OnReset();
             endScreen.SetActive(true);
 
             string extraText;
