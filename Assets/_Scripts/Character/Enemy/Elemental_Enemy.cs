@@ -9,11 +9,13 @@ public class Elemental_Enemy : Enemy
     [SerializeField] private DamageType currentWeakness;
     [SerializeField] private AttackMode previousAttackMode = AttackMode.None;
     private Coroutine currentCoroutine;
+    private int damageInitial;
 
     private void OnEnable()
     {
         healthBar = GameObject.Find("Enemy_HP_UI").GetComponent<HealthBar>();
         SetStartingElement();
+        damageInitial = DamageBase;
     }
 
     private void SetStartingElement()
@@ -108,7 +110,8 @@ public class Elemental_Enemy : Enemy
         }
 
         float damage = DamageBase * 1.5f * Random.Range(0.85f, 1.0f);
-        GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(damage), DamageType.NONE);
+        int nDamage = Mathf.Min(Mathf.FloorToInt(damage), damageInitial * 2);
+        GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(nDamage), DamageType.NONE);
         EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);
         currentCoroutine = StartCoroutine(TriggerCooldown(heavyCooldown));
     }
@@ -123,7 +126,8 @@ public class Elemental_Enemy : Enemy
         }
 
         float damage = DamageBase * Random.Range(0.85f, 1.0f);
-        GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(damage), DamageType.NONE);
+        int nDamage = Mathf.Min(Mathf.FloorToInt(damage), damageInitial * 2);
+        GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(nDamage), DamageType.NONE);
         EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);
         currentCoroutine = StartCoroutine(TriggerCooldown(lightCooldown));
     }
@@ -137,7 +141,8 @@ public class Elemental_Enemy : Enemy
     public override void Skill_2Action()
     {
         float damage = DamageBase * 0.25f;
-        GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(damage), DamageType.NONE);
+        int nDamage = Mathf.Min(Mathf.FloorToInt(damage), damageInitial * 2);
+        GameManager.Instance.battleManager.DealDamage(Faction.Player, Mathf.FloorToInt(nDamage), DamageType.NONE);
         EventBroadcaster.Instance.PostEvent(EventNames.AttackSequence.ENEMY_ATTACK);
 
         IncrementDamage();

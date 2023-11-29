@@ -96,7 +96,8 @@ public class DamageCardManager : MonoBehaviour
                 card.GetComponent<DamageCardObject>().SetCardData(GetDamageCardData());
                 handSlots[index].AddToSlot(card.GetComponent<DamageCardObject>());
                 currentAmount.text = deckActual.Count.ToString();
-                preview.SetCardData(deckActual.Peek());
+                if(deckActual.Count != 0)
+                    preview.SetCardData(deckActual.Peek());
             }
             else
             {
