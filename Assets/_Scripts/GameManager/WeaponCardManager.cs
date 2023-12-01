@@ -7,7 +7,7 @@ public class WeaponCardManager : MonoBehaviour
     [SerializeField] private List<WeaponCard> weaponCards;
     [SerializeField] private List<WeaponCardObject> weaponObjects;
 
-    private void OnStart()
+    private void Start()
     {
         GetCurrentWeapons();
         DisplayWeapons();
