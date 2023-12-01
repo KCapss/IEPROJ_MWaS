@@ -24,16 +24,6 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
 
     private WeaponCard weaponCardData;
 
-    private void Awake()
-    {
-        //EventBroadcaster.Instance.AddObserver(EventNames.AttackSequence.ATTACK_ANIMATION_END, AttackSequence);
-    }
-
-    private void OnDestroy()
-    {
-       //EventBroadcaster.Instance.RemoveObserver(EventNames.AttackSequence.ATTACK_ANIMATION_END);
-    }
-
     public DamageCardObject DamageCardInChamber 
     { 
         set { damageCardInChamber = value; } 
@@ -124,18 +114,7 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
 
     public void AttackSequence()
     {
-        //if(!gameObject.activeInHierarchy) { return; }
-
-        //WeaponCardSlot occupiedSlot = GetComponentInParent<WeaponCardSlot>();
-        //Lane weaponLane = occupiedSlot.Lane;
-        //int activatedLane = param.GetIntExtra(EventNames.AttackSequence.ATTACK_ANIMATION_END, -1);
-
-        //if(activatedLane == (int)weaponLane)
-        //{
-            
-            //cooldownIndicator.StartCooldownIndicator(weaponCardData.Cooldown);
-            StartCoroutine(StartCooldownIndicator(weaponCardData.Cooldown));
-        //}
+        StartCoroutine(StartCooldownIndicator(weaponCardData.Cooldown));
     }
 
    IEnumerator StartCooldownIndicator(float cooldownTime)
