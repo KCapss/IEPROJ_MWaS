@@ -91,6 +91,7 @@ public class LevelManager : MonoBehaviour
     }
     public void OpenWeaponRewards()
     { 
+        EventBroadcaster.Instance.PostEvent(EventNames.UI.WEAPON_REWARD_OPEN);
         rewardScreenWeaponCard.SetActive(true);
         
         foreach(WeaponCardRewards panel in weaponsPanelList)
