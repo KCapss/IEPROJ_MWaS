@@ -32,14 +32,14 @@ public class Player : Character, IKillable
 
 
     //Interface Methods
-    public void Kill()
+    public  override void Kill()
     {
         //this will trigger the end sequences of the game of the current run
         Debug.LogError("Player Died");
         EventBroadcaster.Instance.PostEvent(EventNames.EndCondition.ON_LOSE);
     }
 
-    public void ReceiveDamage(int damage, DamageType damageType)
+    public override void ReceiveDamage(int damage, DamageType damageType)
     {
         HealthCurrent -= damage;
 

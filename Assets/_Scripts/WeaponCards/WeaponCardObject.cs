@@ -18,6 +18,7 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
     [SerializeField] private TextMeshProUGUI restrictionValue;
     [SerializeField] private TextMeshProUGUI restrictionType;
     [SerializeField] private TextMeshProUGUI cardText;
+    [SerializeField] private TextMeshProUGUI cardCooldown;
     [SerializeField] private GameObject damageCardSlot;
     [SerializeField] private VFXTag vfxTag;
     [SerializeField] private CooldownIndicator cooldownIndicator;
@@ -179,7 +180,7 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
         weaponCardData = data;
         vfxTag = data.VFXWeaponTag;
         cardName.text = data.Name;
-        weaponArt.sprite = data.CardIcon;
+        //weaponArt.sprite = data.CardIcon;
         restrictionValue.text = data.RestrictionValue.ToString();
         cardText.text = data.CardText.ToString();
 
@@ -211,5 +212,7 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
             default:
                 break;
         }
+
+        cardCooldown.text = data.Cooldown.ToString() + " seconds";
     }
 }
