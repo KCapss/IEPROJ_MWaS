@@ -179,7 +179,7 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
         weaponCardData = data;
         vfxTag = data.VFXWeaponTag;
         cardName.text = data.Name;
-        //weaponArt.sprite = data.CardIcon;
+        weaponArt.sprite = data.CardIcon;
         weaponElement.sprite = weaponCardData.CardBackground; 
         restrictionValue.text = data.RestrictionValue.ToString();
         cardText.text = data.CardText.ToString();
