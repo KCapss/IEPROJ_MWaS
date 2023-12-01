@@ -1,10 +1,8 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class DamageCardRewards : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI bucketName;
     [SerializeField] private List<GameObject> slots;
 
     [Header("Read Only")]
@@ -16,7 +14,6 @@ public class DamageCardRewards : MonoBehaviour
         BucketTier currentTier = GetTier();
         rewards = CardLibrary.Instance.DamageLibrary.GetDamageCardBucket(currentTier);
         
-        bucketName.text = rewards._name;
         //Debug.Log(rewards._name);
 
         for(int i = 0; i < slots.Count; i++)

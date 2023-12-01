@@ -9,6 +9,7 @@ public class ReplaceWeapon : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         // If transform being dragged is a weapon card
+        Debug.Log("Drop Event");
         if(eventData.pointerDrag.transform.tag == MyTags.WEAPON_CARD)
         {
             Debug.Log("Replace Weapon Drop Event");

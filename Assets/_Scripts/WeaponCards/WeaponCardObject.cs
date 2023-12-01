@@ -37,8 +37,7 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
     }
 
     public void OnDrop(PointerEventData eventData)
-    {
-        
+    {      
         // If transform being dragged is a damage card
         if(eventData.pointerDrag.transform.tag == MyTags.DAMAGE_CARD && isOnCooldown == false)
         {
