@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: ae3cd947756006a42a3849f72da91769
+guid: 09afc48f2cf771c46858dab2281bdb89
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -48,10 +48,10 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 800
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
-  alphaUsage: 1
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 0
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 8
@@ -69,6 +69,19 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -119,291 +132,278 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: title_screen_animation_spreadsheet_0
+      name: title_screen_animation_spreadsheet - Copy_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 761.46155
-        height: 1320
+        x: 20
+        y: 22
+        width: 719
+        height: 1278
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1080670580ed559409b6868d373c5270
-      internalID: -243905170
+      spriteID: 4c101b1d6484c7f4e8528acb5edff102
+      internalID: 1217198161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: title_screen_animation_spreadsheet_1
+      name: title_screen_animation_spreadsheet - Copy_1
       rect:
         serializedVersion: 2
-        x: 811
-        y: 0
-        width: 761.46155
-        height: 1320
+        x: 834
+        y: 22
+        width: 719
+        height: 1278
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b169a5a41ec513c4cb037d9cd22ff988
-      internalID: 2117682175
+      spriteID: 835e81bf78edf814f888f264afaf5fa4
+      internalID: 157683670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: title_screen_animation_spreadsheet_2
+      name: title_screen_animation_spreadsheet - Copy_2
       rect:
         serializedVersion: 2
-        x: 1622
-        y: 0
-        width: 761.46155
-        height: 1320
+        x: 1638
+        y: 22
+        width: 715
+        height: 1278
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 894d1c3449907954baf034d06613f55e
-      internalID: -1387253171
+      spriteID: 5421d27039786ac4187aab2d90601e84
+      internalID: 2106465638
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: title_screen_animation_spreadsheet_3
+      name: title_screen_animation_spreadsheet - Copy_3
       rect:
         serializedVersion: 2
-        x: 2433
-        y: 0
-        width: 761.46155
-        height: 1320
+        x: 2447
+        y: 22
+        width: 721
+        height: 1278
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80177e187d704be478a64e2fd105fb2e
-      internalID: 1723312953
+      spriteID: 9982e8e1f08e2944e8a897224e3b9632
+      internalID: -1879125704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: title_screen_animation_spreadsheet_4
+      name: title_screen_animation_spreadsheet - Copy_4
       rect:
         serializedVersion: 2
-        x: 3244
-        y: 0
-        width: 761.46155
-        height: 1320
+        x: 3238
+        y: 22
+        width: 730
+        height: 1278
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7df929369a9a75b41b0bfbe112a8f47d
-      internalID: -1521989426
+      spriteID: 63fe66360d10f754d86f65951a7491ba
+      internalID: -1366993026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: title_screen_animation_spreadsheet_5
+      name: title_screen_animation_spreadsheet - Copy_5
       rect:
         serializedVersion: 2
-        x: 4055
-        y: 0
-        width: 761.46155
-        height: 1320
+        x: 4052
+        y: 22
+        width: 712
+        height: 1278
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6cd2935454c4c44bb19869f12e00d2d
-      internalID: -1091691589
+      spriteID: 28a6a97c1be15bc44a4071d3f9d51598
+      internalID: 593936784
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: title_screen_animation_spreadsheet_6
+      name: title_screen_animation_spreadsheet - Copy_6
       rect:
         serializedVersion: 2
-        x: 4866
-        y: 0
-        width: 761.46155
-        height: 1320
+        x: 4868
+        y: 22
+        width: 719
+        height: 1278
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3383196aa235de4429b55ff19a6a56a4
-      internalID: 1709666470
+      spriteID: 0f3be00223dd9ef4a92453c8e75214c9
+      internalID: 1885251838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: title_screen_animation_spreadsheet_7
+      name: title_screen_animation_spreadsheet - Copy_7
       rect:
         serializedVersion: 2
-        x: 5677
-        y: 0
-        width: 761.46155
-        height: 1320
+        x: 5691
+        y: 22
+        width: 715
+        height: 1278
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9958b3b45a1ac314598ce7506675458d
-      internalID: 887885463
+      spriteID: 2d5cc4e9106b9904c892bd18bb97bd10
+      internalID: 471938428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: title_screen_animation_spreadsheet_8
+      name: title_screen_animation_spreadsheet - Copy_8
       rect:
         serializedVersion: 2
-        x: 6488
-        y: 0
-        width: 761.46155
-        height: 1320
+        x: 6502
+        y: 22
+        width: 720
+        height: 1278
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a46757bb0d397d478921f665924420b
-      internalID: 855767989
+      spriteID: 31974c12627b49549a479231b3789763
+      internalID: -1097751137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: title_screen_animation_spreadsheet_9
+      name: title_screen_animation_spreadsheet - Copy_9
       rect:
         serializedVersion: 2
-        x: 7299
-        y: 0
-        width: 761.46155
-        height: 1320
+        x: 7325
+        y: 22
+        width: 718
+        height: 1278
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90dc10d00e6645b45931190f4ad10947
-      internalID: 1642958992
+      spriteID: b685926c564888442be5e1980188c723
+      internalID: 1856674272
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: title_screen_animation_spreadsheet_10
+      name: title_screen_animation_spreadsheet - Copy_10
       rect:
         serializedVersion: 2
-        x: 8110
-        y: 0
-        width: 761.46155
-        height: 1320
+        x: 8154
+        y: 22
+        width: 716
+        height: 1278
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fbf9b4b174fab44dbb82a120708cc9a
-      internalID: 1896605597
+      spriteID: 9e123accd16fbd14fb5edb10db68c914
+      internalID: 275989270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: title_screen_animation_spreadsheet_11
+      name: title_screen_animation_spreadsheet - Copy_11
       rect:
         serializedVersion: 2
-        x: 8921
-        y: 0
-        width: 761.46155
-        height: 1320
+        x: 8990
+        y: 22
+        width: 718
+        height: 1278
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a71000fb437536b458ec0e464d07cec2
-      internalID: 746841627
+      spriteID: 508e80ba28f54f34186b0fe74e4bc72a
+      internalID: -1465606198
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: title_screen_animation_spreadsheet_12
+      name: title_screen_animation_spreadsheet - Copy_12
       rect:
         serializedVersion: 2
-        x: 9732
-        y: 0
-        width: 761.46155
-        height: 1320
+        x: 9808
+        y: 22
+        width: 717
+        height: 1278
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 547fb48fa43cb8448813019c2a13d4d2
-      internalID: 2062485817
+      spriteID: 1506aff80f2aef844a788a5d69a24de6
+      internalID: -509460001
       vertices: []
       indices: 
       edges: []
@@ -419,19 +419,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      title_screen_animation_spreadsheet_0: -243905170
-      title_screen_animation_spreadsheet_1: 2117682175
-      title_screen_animation_spreadsheet_10: 1896605597
-      title_screen_animation_spreadsheet_11: 746841627
-      title_screen_animation_spreadsheet_12: 2062485817
-      title_screen_animation_spreadsheet_2: -1387253171
-      title_screen_animation_spreadsheet_3: 1723312953
-      title_screen_animation_spreadsheet_4: -1521989426
-      title_screen_animation_spreadsheet_5: -1091691589
-      title_screen_animation_spreadsheet_6: 1709666470
-      title_screen_animation_spreadsheet_7: 887885463
-      title_screen_animation_spreadsheet_8: 855767989
-      title_screen_animation_spreadsheet_9: 1642958992
+      title_screen_animation_spreadsheet - Copy_0: 1217198161
+      title_screen_animation_spreadsheet - Copy_1: 157683670
+      title_screen_animation_spreadsheet - Copy_10: 275989270
+      title_screen_animation_spreadsheet - Copy_11: -1465606198
+      title_screen_animation_spreadsheet - Copy_12: -509460001
+      title_screen_animation_spreadsheet - Copy_2: 2106465638
+      title_screen_animation_spreadsheet - Copy_3: -1879125704
+      title_screen_animation_spreadsheet - Copy_4: -1366993026
+      title_screen_animation_spreadsheet - Copy_5: 593936784
+      title_screen_animation_spreadsheet - Copy_6: 1885251838
+      title_screen_animation_spreadsheet - Copy_7: 471938428
+      title_screen_animation_spreadsheet - Copy_8: -1097751137
+      title_screen_animation_spreadsheet - Copy_9: 1856674272
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

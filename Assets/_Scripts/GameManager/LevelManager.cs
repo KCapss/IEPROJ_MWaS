@@ -41,7 +41,6 @@ public class LevelManager : MonoBehaviour
             AudioManager.Instance.StopBGM(MyStrings.Audio.Level1Theme);
         }
 
-        EnemyLibrary.Instance.ResetCurrentStageNumber();
         endScreen.SetActive(true);
         endText.text = "YOU LOST!";
         //SceneManager.LoadScene(MyStrings.MainMenu);
