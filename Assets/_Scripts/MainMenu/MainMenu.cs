@@ -6,11 +6,20 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject settingsMenu;
+  
     [SerializeField] private List<Button> mainButtons;
     [SerializeField] private Toggle debugToggle;
     [SerializeField] private GameObject LoadingScreen;
+    [SerializeField] private GameObject settingsMenu;
     //public Image LoadingBarFill;
+
+    [Header("Visible Buttons")]
+    [SerializeField] private GameObject originalTileScreen;
+    [SerializeField] private GameObject playGameObject;
+    [SerializeField] private GameObject settingGameObject;
+    [SerializeField] private Animator animator;
+    
+
 
     private void Start()
     {
@@ -70,10 +79,17 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("tutorial", 0);
     }
 
-    public void LoadNewGame()
+    public void PressPlay()
     {
         AudioManager.Instance.StopBGM(MyStrings.Audio.MainMenuBGM);
+        originalTileScreen.SetActive(false);
+        playGameObject.SetActive(false);
+        settingsMenu.SetActive(false);
+        animator.SetBool("isPlay", true);
+    }
 
+    public void LoadNewGame()
+    {
         string levelPlay = MyStrings.Play;
         StartCoroutine(LoadSceneAsync(levelPlay));
     }
