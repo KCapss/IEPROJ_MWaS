@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WeaponCard : MonoBehaviour
+public class WeaponCard
 {
     [Header("Weapon Stats")]
     [SerializeField] private string _name;
