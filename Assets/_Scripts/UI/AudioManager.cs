@@ -11,15 +11,20 @@ public class AudioManager : MonoBehaviour
     [SerializeField] Sound[] SFX;
     [SerializeField] Sound[] UI_SFX;
 
-    [Header("Read-Only")]
     [SerializeField] private float volumeBGMMultiplier;
-    private float volumeSFXMultiplier = 1.0f;
-    private float volumeUI_SFXMultiplier = 1.0f;
+    [SerializeField] private float volumeSFXMultiplier;
+    [SerializeField] private AudioData audioData;
+
 
     public static AudioManager Instance;
 
     // Start is called before the first frame update
     void Awake()
+    {
+        Initialize();
+    }
+
+    private void Initialize()
     {
         if (Instance == null)
         {
@@ -61,6 +66,12 @@ public class AudioManager : MonoBehaviour
 
             s.source.loop = s.loop;
         }
+    }
+
+    private void Start()
+    {
+        volumeBGMMultiplier = audioData.BGMVolume;
+        volumeSFXMultiplier = audioData.SFXVolume;
     }
 
     public void PlayBGM(string name)
@@ -127,7 +138,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogError($"Error! UI_SFX of name {name} was not found!");
             return null;
         }
-        s.source.volume = s.volume * volumeUI_SFXMultiplier;
+        s.source.volume = s.volume * volumeSFXMultiplier;
         
         if(!s.source.isPlaying)
         {
@@ -141,7 +152,8 @@ public class AudioManager : MonoBehaviour
     // Method for changing value
     public void SetBGMVolume(float value)
     {
-        volumeBGMMultiplier = value;
+        audioData.SetVolumeBGM(value);
+        volumeBGMMultiplier = audioData.BGMVolume;
 
         foreach(Sound s in BGM)
         {
@@ -151,8 +163,13 @@ public class AudioManager : MonoBehaviour
 
     public void SetSFXVolume(float value)
     {
-        this.volumeSFXMultiplier = value;
-        this.volumeBGMMultiplier = value;
+        audioData.SetVolumeSFX(value);
+        volumeBGMMultiplier = audioData.SFXVolume;
+
+        foreach(Sound s in SFX)
+        {
+            s.source.volume = s.volume * volumeSFXMultiplier;
+        }
     }
 
 
