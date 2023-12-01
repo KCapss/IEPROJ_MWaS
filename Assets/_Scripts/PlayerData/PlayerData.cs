@@ -27,15 +27,7 @@ public class PlayerData : MonoBehaviour
 
     private void Start()
     {
-        if (EnemyLibrary.Instance.GetCurrentStageNumber() == 0)
-        {
-            for (int i = 0; i < damageTypes.Count; i++)
-            {
-                damageTypes[i] = (DamageType)UnityEngine.Random.Range(0, 3);
-            }
-        }
-
-
+        OnReset();
     }
 
     void CreateSingleton()
@@ -92,12 +84,11 @@ public class PlayerData : MonoBehaviour
 
         for(int i = 0; i < weaponList.Count; i++)
         {
-            WeaponCard weaponCard = new WeaponCard();
-
             WeaponCard_SO weaponCardData = CardLibrary.Instance.WeaponLibrary.GetWeaponCardData(weaponList[i]);
             DamageType damageType = damageTypes[i];
             Sprite cardBackground = GetElementCardSprite(damageType);
 
+            WeaponCard weaponCard = new WeaponCard();
             weaponCard.Initialize(weaponCardData, damageType, cardBackground);
             data.Add(weaponCard);
         }
