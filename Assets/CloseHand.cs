@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CloseHand : MonoBehaviour
 {
@@ -9,16 +7,22 @@ public class CloseHand : MonoBehaviour
 
     private void Awake()
     {
-        EventBroadcaster.Instance.AddObserver(EventNames.UI.WEAPON_REWARD_OPEN, CloseHandObject);
+        EventBroadcaster.Instance.AddObserver(EventNames.EndCondition.ON_COMBAT_END, CloseHandObject);
     }
 
     private void OnDestroy()
     {
-        EventBroadcaster.Instance.RemoveObserver(EventNames.UI.DAMAGE_REWARD_OPEN);
+        EventBroadcaster.Instance.RemoveObserver(EventNames.EndCondition.ON_COMBAT_END);
     }
 
     public void CloseHandObject()
     {
+        StartCoroutine(DisableInput());
+    }
+
+    IEnumerator DisableInput()
+    {
+        yield return new WaitForEndOfFrame();
         hand.SetActive(false);
     }
 }
