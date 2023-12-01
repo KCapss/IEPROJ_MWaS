@@ -57,6 +57,10 @@ public class LevelManager : MonoBehaviour
         else
         {
             // Player Defeats the Boss
+            if(AudioManager.Instance != null)
+            {
+                AudioManager.Instance.StopBGM(MyStrings.Audio.Level1Theme);
+            }
             EnemyLibrary.Instance.SaveCurrentProgress();
             EnemyLibrary.Instance.ResetCurrentStageNumber();
             PlayerData.Instance.OnReset();
