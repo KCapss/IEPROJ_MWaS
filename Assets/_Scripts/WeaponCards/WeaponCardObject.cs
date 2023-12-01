@@ -181,23 +181,9 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
         vfxTag = data.VFXWeaponTag;
         cardName.text = data.Name;
         //weaponArt.sprite = data.CardIcon;
+        weaponElement.sprite = weaponCardData.CardBackground; 
         restrictionValue.text = data.RestrictionValue.ToString();
         cardText.text = data.CardText.ToString();
-
-        switch(data.DamageType)
-        { 
-            case DamageType.Fire:
-                weaponElement.color = Color.red; 
-                break;
-
-            case DamageType.Water:
-                weaponElement.color = Color.blue; 
-                break;
-
-            case DamageType.Wind:
-                weaponElement.color = Color.green; 
-                break;
-        }
 
         switch(data.RestrictionType)
         {
