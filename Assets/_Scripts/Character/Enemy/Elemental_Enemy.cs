@@ -86,14 +86,33 @@ public class Elemental_Enemy : Enemy
             StartCoroutine(DeathSequence());
         }
        
-    } 
+    }
 
     IEnumerator DeathSequence()
     {
         isDead = true;
+        yield return StartCoroutine(TriggerDeathAnim());
         EventBroadcaster.Instance.PostEvent(EventNames.EndCondition.ON_COMBAT_END);
         yield return new WaitForSecondsRealtime(3.0f);
         EventBroadcaster.Instance.PostEvent(EventNames.EndCondition.ON_WINN);
+    }
+
+    IEnumerator TriggerDeathAnim()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        Material material = spriteRenderer.material;
+        float timer = 0f;
+        while (timer < 1.0f)
+        {
+            float fillAmount = 1.0f - timer;
+            material.SetFloat("_FullDistortionFade", fillAmount);
+
+
+            timer += Time.deltaTime;
+            Debug.Log(fillAmount);
+            yield return null;
+        }
+
     }
 
     public void IncrementDamage()
