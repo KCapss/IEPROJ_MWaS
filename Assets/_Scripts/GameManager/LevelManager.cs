@@ -74,7 +74,7 @@ public class LevelManager : MonoBehaviour
                     break;
 
                 default:
-                    extraText = "NEXT AREA UNLOCKED";
+                    extraText = "LEVEL CLEAR";
                     break;
             }
 
