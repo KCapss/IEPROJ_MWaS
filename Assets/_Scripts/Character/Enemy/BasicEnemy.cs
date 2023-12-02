@@ -67,7 +67,6 @@ public class BasicEnemy : Enemy
             float fillAmount = 1.0f - timer;
             material.SetFloat("_FullDistortionFade", fillAmount);
 
-
             timer += Time.deltaTime;
             Debug.Log(fillAmount);
             yield return null;
