@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class Elemental_Enemy : Enemy
@@ -23,20 +24,21 @@ public class Elemental_Enemy : Enemy
         int randomValue = Random.Range(0, 2);
 
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        Material material= spriteRenderer.material;
 
         if (randomValue == 0)
         {
-            spriteRenderer.color = Color.red;
+            material.SetColor("_SineGlowColor", UnityEngine.Color.red);
             currentWeakness = DamageType.Fire;
         }
         else if (randomValue == 1)
         {
-            spriteRenderer.color = Color.blue;
+            material.SetColor("_SineGlowColor", UnityEngine.Color.blue);
             currentWeakness = DamageType.Water;
         }
         else
         {
-            spriteRenderer.color = Color.green;
+            material.SetColor("_SineGlowColor", UnityEngine.Color.green);
             currentWeakness = DamageType.Wind;
         }
     }
@@ -84,29 +86,58 @@ public class Elemental_Enemy : Enemy
             StartCoroutine(DeathSequence());
         }
        
-    } 
+    }
 
     IEnumerator DeathSequence()
     {
         isDead = true;
+        yield return StartCoroutine(TriggerDeathAnim());
         EventBroadcaster.Instance.PostEvent(EventNames.EndCondition.ON_COMBAT_END);
         yield return new WaitForSecondsRealtime(3.0f);
         EventBroadcaster.Instance.PostEvent(EventNames.EndCondition.ON_WINN);
     }
 
+    IEnumerator TriggerDeathAnim()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        Material material = spriteRenderer.material;
+        float timer = 0f;
+        while (timer < 1.0f)
+        {
+            float fillAmount = 1.0f - timer;
+            material.SetFloat("_FullDistortionFade", fillAmount);
+
+
+            timer += Time.deltaTime;
+            Debug.Log(fillAmount);
+            yield return null;
+        }
+
+    }
+
     public void IncrementDamage()
     {
+        if (animator != null && isBuffing)
+        {
+            animator.SetBool("isBuffing", true);
+        }
+
         Debug.Log("Enemy Stat Up");
         _damageBase += _damageIncrement;
     }
 
     public override void HeavyAction()
     {
+
         if (animator != null)
         {
-            Debug.LogWarning("Attack Heavy");
-            animator.SetBool("isAttacking", true);
-            //animator.SetBool("isAttacking", false);
+            if (isAttackingHeavy)
+                animator.SetBool("isAttackingHeavy", true);
+            else
+            {
+                animator.SetBool("isAttacking", true);
+            }
+
         }
 
         float damage = DamageBase * 1.5f * Random.Range(0.85f, 1.0f);
@@ -120,9 +151,7 @@ public class Elemental_Enemy : Enemy
     {
         if (animator != null)
         {
-            Debug.LogWarning("Attack Light");
             animator.SetBool("isAttacking", true);
-            //animator.SetBool("isAttacking", false);
         }
 
         float damage = DamageBase * Random.Range(0.85f, 1.0f);
@@ -210,18 +239,18 @@ public class Elemental_Enemy : Enemy
         int randomValue = Random.Range(0, 2);
 
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-
+        Material material = spriteRenderer.material;
         if(randomValue == 0)
         {
             if(currentWeakness == DamageType.Fire)
             {
                 currentWeakness = DamageType.Water;
-                spriteRenderer.color = Color.blue;
+                material.SetColor("_SineGlowColor", UnityEngine.Color.blue);
             }
             else
             {
                 currentWeakness = DamageType.Fire;
-                spriteRenderer.color = Color.red;
+                material.SetColor("_SineGlowColor", UnityEngine.Color.red);
             }
         }
         else if(randomValue == 1)
@@ -229,12 +258,12 @@ public class Elemental_Enemy : Enemy
             if(currentWeakness == DamageType.Water)
             {
                 currentWeakness = DamageType.Wind;
-                spriteRenderer.color = Color.green;
+                material.SetColor("_SineGlowColor", UnityEngine.Color.green);
             }
             else
             {
                 currentWeakness = DamageType.Water;
-                spriteRenderer.color = Color.blue;
+                material.SetColor("_SineGlowColor", UnityEngine.Color.blue);
             }
         }
 
@@ -243,12 +272,12 @@ public class Elemental_Enemy : Enemy
             if(currentWeakness == DamageType.Wind)
             {
                 currentWeakness = DamageType.Fire;
-                spriteRenderer.color = Color.red;
+                material.SetColor("_SineGlowColor", UnityEngine.Color.red);
             }
             else
             {
                 currentWeakness = DamageType.Wind;
-                spriteRenderer.color = Color.green;
+                material.SetColor("_SineGlowColor", UnityEngine.Color.green);
             }
         }
 

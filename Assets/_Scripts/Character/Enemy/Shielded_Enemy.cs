@@ -47,18 +47,42 @@ public class Shielded_Enemy : Enemy
         {
             StartCoroutine(DeathSequence());
         }
-    } 
+    }
 
     IEnumerator DeathSequence()
     {
         isDead = true;
+        yield return StartCoroutine(TriggerDeathAnim());
         EventBroadcaster.Instance.PostEvent(EventNames.EndCondition.ON_COMBAT_END);
         yield return new WaitForSecondsRealtime(3.0f);
         EventBroadcaster.Instance.PostEvent(EventNames.EndCondition.ON_WINN);
     }
 
+    IEnumerator TriggerDeathAnim()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        Material material = spriteRenderer.material;
+        float timer = 0f;
+        while (timer < 1.0f)
+        {
+            float fillAmount = 1.0f - timer;
+            material.SetFloat("_FullDistortionFade", fillAmount);
+
+
+            timer += Time.deltaTime;
+            Debug.Log(fillAmount);
+            yield return null;
+        }
+
+    }
+
     public void IncrementDamage()
     {
+        if (animator != null && isBuffing)
+        {
+            animator.SetBool("isBuffing", true);
+        }
+
         Debug.Log("Enemy Stat Up");
         _damageBase += _damageIncrement;
     }
@@ -68,9 +92,7 @@ public class Shielded_Enemy : Enemy
         //Add Animation Here
         if (animator != null)
         {
-            Debug.LogWarning("Attack Light");
             animator.SetBool("isAttacking", true);
-            //animator.SetBool("isAttacking", false);
         }
 
         float damage = DamageBase * Random.Range(0.85f, 1.0f);
@@ -84,9 +106,13 @@ public class Shielded_Enemy : Enemy
     {
         if (animator != null)
         {
-            Debug.LogWarning("Attack Heavy");
-            animator.SetBool("isAttacking", true);
-            //animator.SetBool("isAttacking", false);
+            if (isAttackingHeavy)
+                animator.SetBool("isAttackingHeavy", true);
+            else
+            {
+                animator.SetBool("isAttacking", true);
+            }
+
         }
 
         float damage = DamageBase * 1.5f * Random.Range(0.85f, 1.0f);
@@ -131,6 +157,10 @@ public class Shielded_Enemy : Enemy
 
     IEnumerator ActivateShield()
     {
+        if (animator != null && isChangeMode)
+        {
+            animator.SetBool("isShielded", true);
+        }
         isShielded = true;
 
         Parameters param = new Parameters();
@@ -138,6 +168,10 @@ public class Shielded_Enemy : Enemy
         EventBroadcaster.Instance.PostEvent(EventNames.UI.SHIELDS_UP, param);
 
         yield return new WaitForSeconds(skill_3Cooldown);
+        if (animator != null && isChangeMode)
+        {
+            animator.SetBool("isShielded", false);
+        }
         isShielded = false;
     }
 
