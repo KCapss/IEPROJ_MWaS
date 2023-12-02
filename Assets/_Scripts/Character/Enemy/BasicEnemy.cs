@@ -77,18 +77,19 @@ public class BasicEnemy : Enemy
 
     public void IncrementDamage()
     {
+        if (animator != null && isBuffing)
+        {
+            animator.SetBool("isBuffing", true);
+        }
         Debug.Log("Enemy Stat Up");
         _damageBase += _damageIncrement;
     }
 
     public override void LightAction()
     {
-        //Add Animation Here
         if (animator != null)
         {
-            Debug.LogWarning("Attack Light");
             animator.SetBool("isAttacking", true);
-            //animator.SetBool("isAttacking", false);
         }
 
         float damage = DamageBase * Random.Range(0.85f, 1.0f);
@@ -102,9 +103,13 @@ public class BasicEnemy : Enemy
     {
         if (animator != null)
         {
-            Debug.LogWarning("Attack Heavy");
-            animator.SetBool("isAttacking", true);
-            //animator.SetBool("isAttacking", false);
+            if (isAttackingHeavy)
+                animator.SetBool("isAttackingHeavy", true);
+            else
+            {
+                animator.SetBool("isAttacking", true);
+            }
+
         }
 
         float damage = DamageBase * 1.5f * Random.Range(0.85f, 1.0f);

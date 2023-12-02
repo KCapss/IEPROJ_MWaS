@@ -105,18 +105,19 @@ public class Final_Boss : Enemy
 
     public void IncrementDamage()
     {
+        if (animator != null && isBuffing)
+        {
+            animator.SetBool("isBuffing", true);
+        }
         Debug.Log("Enemy Stat Up");
         _damageBase += _damageIncrement;
     }
 
     public override void LightAction()
     {
-        //Add Animation Here
         if (animator != null)
         {
-            Debug.LogWarning("Attack Light");
             animator.SetBool("isAttacking", true);
-            //animator.SetBool("isAttacking", false);
         }
 
         float damage = DamageBase * Random.Range(0.85f, 1.0f);
@@ -130,9 +131,13 @@ public class Final_Boss : Enemy
     {
         if (animator != null)
         {
-            Debug.LogWarning("Attack Heavy");
-            animator.SetBool("isAttacking", true);
-            //animator.SetBool("isAttacking", false);
+            if (!isAttackingHeavy)
+                animator.SetBool("isAttackingHeavy", true);
+            else
+            {
+                animator.SetBool("isAttacking", true);
+            }
+
         }
 
         float damage = DamageBase * 1.5f * Random.Range(0.85f, 1.0f);
@@ -180,10 +185,19 @@ public class Final_Boss : Enemy
     IEnumerator ActivateShield()
     {
         isShielded = true;
+        if (animator != null && isChangeMode)
+        {
+            animator.SetBool("isShielded", true);
+        }
 
         Parameters param = new Parameters();
         param.PutExtra(EventNames.UI.SHIELDS_UP, skill_3Cooldown);
         EventBroadcaster.Instance.PostEvent(EventNames.UI.SHIELDS_UP, param);
+
+        if (animator != null && isChangeMode)
+        {
+            animator.SetBool("isShielded", false);
+        }
 
         yield return new WaitForSeconds(skill_3Cooldown);
         isShielded = false;

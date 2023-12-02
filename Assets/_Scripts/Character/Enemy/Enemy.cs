@@ -32,6 +32,9 @@ public abstract class Enemy : Character
 
     [Header("Animation Sprite")] //Exclusive for Enemies
     [SerializeField] protected GameObject spriteAnimationObject;
+    [SerializeField] protected bool isAttackingHeavy = false;
+    [SerializeField] protected bool isBuffing = false;
+    [SerializeField] protected bool isChangeMode = false;
 
     protected delegate void AttackAction();
     protected Dictionary<AttackMode, AttackAction> attackActions = new Dictionary<AttackMode, AttackAction>();
