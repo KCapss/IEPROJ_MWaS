@@ -84,7 +84,7 @@ public class MainMenu : MonoBehaviour
         AudioManager.Instance.StopBGM(MyStrings.Audio.MainMenuBGM);
         originalTileScreen.SetActive(false);
         playGameObject.SetActive(false);
-        settingsMenu.SetActive(false);
+        settingGameObject.SetActive(false);
         animator.SetBool("isPlay", true);
     }
 

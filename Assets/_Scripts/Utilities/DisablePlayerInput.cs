@@ -6,12 +6,12 @@ public class DisablePlayerInput : MonoBehaviour
 
     private void Awake()
     {
-        EventBroadcaster.Instance.AddObserver(EventNames.EndCondition.ON_COMBAT_END, DisableInput);       
+        //EventBroadcaster.Instance.AddObserver(EventNames.EndCondition.ON_COMBAT_END, DisableInput);       
     }
 
     private void OnDestroy()
     {
-        EventBroadcaster.Instance.RemoveObserver(EventNames.EndCondition.ON_COMBAT_END);
+        //EventBroadcaster.Instance.RemoveObserver(EventNames.EndCondition.ON_COMBAT_END);
     }
 
     public void DisableInput()

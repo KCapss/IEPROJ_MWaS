@@ -37,8 +37,7 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
     }
 
     public void OnDrop(PointerEventData eventData)
-    {
-        
+    {      
         // If transform being dragged is a damage card
         if(eventData.pointerDrag.transform.tag == MyTags.DAMAGE_CARD && isOnCooldown == false)
         {
@@ -180,7 +179,7 @@ public class WeaponCardObject : MonoBehaviour, IDropHandler
         weaponCardData = data;
         vfxTag = data.VFXWeaponTag;
         cardName.text = data.Name;
-        //weaponArt.sprite = data.CardIcon;
+        weaponArt.sprite = data.CardIcon;
         weaponElement.sprite = weaponCardData.CardBackground; 
         restrictionValue.text = data.RestrictionValue.ToString();
         cardText.text = data.CardText.ToString();
