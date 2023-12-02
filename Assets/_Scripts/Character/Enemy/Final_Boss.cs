@@ -131,7 +131,7 @@ public class Final_Boss : Enemy
     {
         if (animator != null)
         {
-            if (!isAttackingHeavy)
+            if (isAttackingHeavy)
                 animator.SetBool("isAttackingHeavy", true);
             else
             {
@@ -187,6 +187,7 @@ public class Final_Boss : Enemy
         isShielded = true;
         if (animator != null && isChangeMode)
         {
+            Debug.Log("Triggered Shielded Anim");
             animator.SetBool("isShielded", true);
         }
 
@@ -194,12 +195,14 @@ public class Final_Boss : Enemy
         param.PutExtra(EventNames.UI.SHIELDS_UP, skill_3Cooldown);
         EventBroadcaster.Instance.PostEvent(EventNames.UI.SHIELDS_UP, param);
 
-        if (animator != null && isChangeMode)
-        {
-            animator.SetBool("isShielded", false);
-        }
+        
 
         yield return new WaitForSeconds(skill_3Cooldown);
+        if (animator != null && isChangeMode)
+        {
+            Debug.Log("UnTriggered Shielded Anim");
+            animator.SetBool("isShielded", false);
+        }
         isShielded = false;
     }
 
